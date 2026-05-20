@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -310,6 +311,53 @@ margin-top: 1rem;
 }
 .join-cta:hover { background: var(--ember); }
 
+/* ── CONTACT ── */
+.contact {
+background: var(--cream);
+}
+.contact-grid {
+display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+align-items: start; margin-top: 2rem;
+}
+.contact-info p {
+color: var(--stone); font-size: 1.02rem; margin-bottom: 1rem;
+}
+.contact-info a { color: var(--pine); font-weight: 600; }
+.contact-info a:hover { color: var(--campfire); }
+.contact-method {
+display: flex; gap: 1rem; align-items: flex-start;
+margin-bottom: 1.5rem;
+}
+.contact-method-icon {
+width: 40px; height: 40px; min-width: 40px;
+background: var(--pine); color: var(--campfire);
+display: flex; align-items: center; justify-content: center;
+font-size: 1.2rem; border-radius: 2px;
+}
+.contact-method h3 {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.95rem; color: var(--pine); margin-bottom: 0.2rem;
+}
+.contact-method p { font-size: 0.9rem; color: var(--stone); }
+.contact-form {
+background: var(--parchment); padding: 2rem;
+border-top: 3px solid var(--pine);
+}
+.contact-form h3 {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 1.1rem; color: var(--pine); margin-bottom: 1.2rem;
+}
+.gform-embed {
+border-radius: 2px; overflow: hidden;
+}
+.gform-embed iframe {
+width: 100%; border: none;
+}
+
+@media (max-width: 768px) {
+.contact-grid { grid-template-columns: 1fr; }
+}
+
 /* ── FOOTER ── */
 footer {
 background: var(--charcoal); color: rgba(255,255,255,0.5);
@@ -348,6 +396,7 @@ section { padding: 3rem 1.2rem; }
 <li><a href="#service">Service</a></li>
 <li><a href="#eagles">Eagle Scouts</a></li>
 <li><a href="#join">Join Us</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 
@@ -356,7 +405,7 @@ section { padding: 3rem 1.2rem; }
 <div class="hero-badge">Boy Scouts of America &bull; Washington Crossing Council</div>
 <img src="Troop_white_transparent.png" alt="BSA Troop 13 - Trumbauersville, PA" style="height: 220px; margin-bottom: 1rem; position: relative;">
 <p class="hero-sub">Building character, leadership, and lifelong friendships for boys in Trumbauersville, PA. Tohickon District.</p>
-<a href="#join" class="hero-cta">Join Our Troop &rarr;</a>
+<a href="#contact" class="hero-cta">Learn More &darr;</a>
 <div class="hero-trees">
 <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0,120 L0,80 L30,40 L60,80 L80,50 L100,80 L130,30 L160,80 L180,60 L210,80 L240,20 L270,80 L300,50 L330,80 L350,40 L380,80 L410,25 L440,80 L470,55 L500,80 L520,35 L550,80 L580,45 L610,80 L640,20 L670,80 L700,50 L720,80 L750,30 L780,80 L810,55 L840,80 L870,25 L900,80 L930,45 L960,80 L980,35 L1010,80 L1040,50 L1070,80 L1100,20 L1130,80 L1160,40 L1190,80 L1210,55 L1240,80 L1270,30 L1300,80 L1330,50 L1360,80 L1390,35 L1420,80 L1440,60 L1440,120 Z" fill="rgba(0,0,0,0.3)"/>
@@ -710,11 +759,52 @@ section { padding: 3rem 1.2rem; }
 </div>
 </section>
 
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<div class="section-inner">
+<div class="section-label">Get in Touch</div>
+<h2 class="section-title">Contact Us</h2>
+<div class="contact-grid">
+<div class="contact-info">
+<p>Have questions about Troop 13? Thinking about joining? Want to learn more about Scouting for your child? We'd love to hear from you.</p>
+<div class="contact-method">
+<div class="contact-method-icon">&#128233;</div>
+<div>
+<h3>Email Us</h3>
+<p><a href="mailto:committeechair@troop13pa.com">committeechair@troop13pa.com</a></p>
+</div>
+</div>
+<div class="contact-method">
+<div class="contact-method-icon">&#128197;</div>
+<div>
+<h3>Visit a Meeting</h3>
+<p>Mondays at 7PM at <a href="https://maps.app.goo.gl/WqWfAnZNb1nKoapy9" target="_blank">Scout Hall</a>, behind the Trumbauersville Fire Station</p>
+</div>
+</div>
+<div class="contact-method">
+<div class="contact-method-icon">&#128101;</div>
+<div>
+<h3>Follow Us</h3>
+<p><a href="https://www.facebook.com/Troop13PA" target="_blank">Facebook &mdash; Troop 13 PA</a></p>
+</div>
+</div>
+</div>
+<div class="contact-form" id="contactForm">
+<h3>Send Us a Message</h3>
+<div class="gform-embed">
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfhcxMmm-4UtNNTs_wJeZKYTiX8f0jdrjU0RmMrneTjUK-mkg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" title="Contact Troop 13">Loading…</iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <!-- FOOTER -->
 <footer>
 <p>BSA Troop 13 &bull; Washington Crossing Council &bull; Tohickon District &bull; Trumbauersville, PA</p>
 <p style="margin-top: 0.3rem;">Follow us on <a href="https://www.facebook.com/Troop13PA" target="_blank">Facebook</a></p>
 </footer>
+
 
 </body>
 </html>
