@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSA Troop 13 | Trumbauersville, PA</title>
+<style>
+:root {
+--pine: #6B1624;
+--forest: #862038;
+--bark: #5C4033;
+--trail: #8B7355;
+--campfire: #D4A843;
+--ember: #C09530;
+--sky: #E8DDD0;
+--parchment: #F5F0E8;
+--cream: #FDFBF7;
+--stone: #6B6560;
+--charcoal: #2C2925;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+color: var(--charcoal);
+background: var(--cream);
+line-height: 1.65;
+font-size: 0.95rem;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+background: rgba(91, 26, 42, 0.95);
+backdrop-filter: blur(8px);
+padding: 0 2rem;
+display: flex; align-items: center; justify-content: space-between;
+height: 56px;
+border-bottom: 2px solid var(--campfire);
+}
+nav .nav-logo {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-weight: 700; font-size: 1.1rem; color: #fff;
+letter-spacing: 0.03em;
+}
+nav .nav-logo span { color: var(--campfire); }
+nav ul { list-style: none; display: flex; gap: 1.5rem; }
+nav ul li a {
+color: rgba(255,255,255,0.85); text-decoration: none;
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase;
+transition: color 0.2s;
+}
+nav ul li a:hover { color: var(--campfire); }
+
+/* ── HERO ── */
+.hero {
+min-height: 70vh;
+display: flex; flex-direction: column; align-items: center; justify-content: center;
+text-align: center;
+background: linear-gradient(170deg, var(--pine) 0%, #4A0E18 40%, #2E0910 100%);
+position: relative; overflow: hidden;
+padding: 6rem 2rem 10rem;
+}
+.hero::before {
+content: '';
+position: absolute; inset: 0;
+background: radial-gradient(ellipse at 50% 120%, rgba(212,168,67,0.15) 0%, transparent 60%);
+}
+.hero-badge {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+color: var(--campfire);
+border: 1px solid rgba(212,133,58,0.4);
+padding: 0.4rem 1.2rem; border-radius: 2px;
+margin-bottom: 2rem; position: relative;
+}
+.hero h1 {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: clamp(3.5rem, 7vw, 6rem);
+color: #fff; line-height: 1.05;
+position: relative;
+margin-bottom: 0.5rem;
+letter-spacing: 0.04em;
+text-transform: uppercase;
+}
+.hero h1 .accent { color: var(--campfire); }
+.hero-sub {
+font-size: 1.15rem; color: rgba(255,255,255,0.7);
+max-width: 520px; margin: 1rem auto 2.5rem;
+position: relative;
+}
+.hero-cta {
+display: inline-flex; align-items: center; gap: 0.5rem;
+background: var(--campfire); color: #fff;
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase;
+padding: 0.85rem 2rem; border-radius: 2px;
+text-decoration: none; transition: background 0.2s;
+position: relative;
+}
+.hero-cta:hover { background: var(--ember); }
+/* trees silhouette */
+.hero-trees {
+position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+overflow: hidden; pointer-events: none;
+}
+.hero-trees svg { width: 100%; height: 100%; }
+
+/* ── SECTIONS ── */
+section { padding: 5rem 2rem; }
+.section-inner { max-width: 960px; margin: 0 auto; }
+
+.section-label {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+color: var(--campfire); margin-bottom: 0.5rem;
+}
+.section-title {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+color: var(--pine); line-height: 1.2;
+margin-bottom: 1.5rem;
+text-transform: uppercase;
+letter-spacing: 0.03em;
+}
+
+/* ── ABOUT ── */
+.about { background: var(--parchment); }
+.about-grid {
+display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+align-items: start;
+}
+.about-text p { margin-bottom: 1rem; color: var(--stone); font-size: 1.02rem; }
+.about-stats {
+display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.stat-card {
+background: var(--cream);
+padding: 1.5rem;
+border-left: 3px solid var(--campfire);
+}
+.stat-card .stat-num {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 2rem; color: var(--pine); line-height: 1;
+}
+.stat-card .stat-label {
+font-size: 0.82rem; color: var(--trail); margin-top: 0.3rem;
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+/* ── ADVENTURES ── */
+.adventures { background: var(--cream); }
+.adventures-grid {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+margin-top: 2rem;
+}
+.adventure-card {
+background: var(--parchment);
+padding: 1.8rem;
+border-top: 3px solid var(--pine);
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.adventure-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.adventure-card .card-icon {
+font-size: 1.6rem; margin-bottom: 0.8rem;
+}
+.adventure-card h3 {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 1.05rem; color: var(--pine);
+margin-bottom: 0.5rem;
+}
+.adventure-card p {
+font-size: 0.9rem; color: var(--stone); line-height: 1.55;
+}
+
+/* ── HIGHLIGHTS ── */
+.highlights { background: var(--pine); color: #fff; }
+.highlights .section-label { color: var(--campfire); }
+.highlights .section-title { color: #fff; }
+.timeline {
+position: relative;
+padding-left: 2rem;
+border-left: 2px solid rgba(255,255,255,0.15);
+margin-top: 2rem;
+}
+.timeline-item {
+position: relative;
+margin-bottom: 2rem;
+padding-bottom: 2rem;
+border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.timeline-item::before {
+content: '';
+position: absolute; left: -2.35rem; top: 0.3rem;
+width: 10px; height: 10px;
+background: var(--campfire);
+border-radius: 50%;
+border: 2px solid var(--pine);
+}
+.timeline-date {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+color: var(--campfire); margin-bottom: 0.3rem;
+}
+.timeline-title {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 1.05rem; margin-bottom: 0.4rem;
+}
+.timeline-body {
+font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.6;
+}
+
+/* ── CALENDAR ── */
+.calendar { background: var(--cream); }
+.calendar-embed {
+margin-top: 2rem;
+border: 1px solid rgba(0,0,0,0.08);
+border-radius: 2px;
+overflow: hidden;
+}
+.calendar-embed iframe {
+width: 100%;
+height: 500px;
+border: none;
+}
+
+/* ── SERVICE ── */
+.service { background: var(--parchment); }
+.service-grid {
+display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+margin-top: 2rem;
+}
+.service-item {
+display: flex; gap: 1rem; align-items: flex-start;
+}
+.service-icon {
+width: 40px; height: 40px; min-width: 40px;
+background: var(--pine); color: var(--campfire);
+display: flex; align-items: center; justify-content: center;
+font-size: 1.2rem; border-radius: 2px;
+}
+.service-item h3 {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.95rem; color: var(--pine); margin-bottom: 0.25rem;
+}
+.service-item p { font-size: 0.88rem; color: var(--stone); }
+
+/* ── EAGLES ── */
+.eagles { background: var(--cream); }
+.eagle-projects {
+display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem;
+margin-top: 2rem;
+}
+.eagle-card {
+background: var(--parchment);
+padding: 1.3rem 1.5rem;
+border-left: 3px solid var(--campfire);
+}
+.eagle-card .eagle-name {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.95rem; color: var(--pine); margin-bottom: 0.3rem;
+}
+.eagle-card .eagle-project {
+font-size: 0.85rem; color: var(--stone); line-height: 1.5;
+}
+
+/* ── JOIN ── */
+.join {
+background: linear-gradient(170deg, var(--pine) 0%, #4A0E18 100%);
+color: #fff; text-align: center;
+}
+.join .section-title { color: #fff; }
+.join-body {
+max-width: 600px; margin: 0 auto;
+font-size: 1.05rem; color: rgba(255,255,255,0.8);
+margin-bottom: 2rem;
+}
+.join-details {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+max-width: 700px; margin: 2.5rem auto;
+}
+.join-detail {
+text-align: center;
+}
+.join-detail .detail-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.join-detail h3 {
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.85rem; color: var(--campfire);
+text-transform: uppercase; letter-spacing: 0.05em;
+margin-bottom: 0.3rem;
+}
+.join-detail p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+.join-cta {
+display: inline-flex;
+background: var(--campfire); color: #fff;
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase;
+padding: 0.85rem 2.5rem; border-radius: 2px;
+text-decoration: none; transition: background 0.2s;
+margin-top: 1rem;
+}
+.join-cta:hover { background: var(--ember); }
+
+/* ── FOOTER ── */
+footer {
+background: var(--charcoal); color: rgba(255,255,255,0.5);
+padding: 2rem;
+text-align: center;
+font-size: 0.82rem;
+font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+padding-bottom: 70px;
+}
+footer a { color: var(--campfire); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+nav ul { display: none; }
+.about-grid { grid-template-columns: 1fr; }
+.adventures-grid { grid-template-columns: 1fr; }
+.service-grid { grid-template-columns: 1fr; }
+.join-details { grid-template-columns: 1fr; gap: 1rem; }
+}
+@media (max-width: 480px) {
+section { padding: 3rem 1.2rem; }
+.about-stats { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-logo">TROOP <span>13</span></div>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#adventures">Adventures</a></li>
+<li><a href="#highlights">Highlights</a></li>
+<li><a href="#calendar">Calendar</a></li>
+<li><a href="#service">Service</a></li>
+<li><a href="#eagles">Eagle Scouts</a></li>
+<li><a href="#join">Join Us</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-badge">Boy Scouts of America &bull; Washington Crossing Council</div>
+<img src="images/f36119bf.txt" alt="BSA Troop 13 - Trumbauersville, PA" style="height: 220px; margin-bottom: 1rem; position: relative;">
+<p class="hero-sub">Building character, leadership, and lifelong friendships for boys in Trumbauersville, PA. Tohickon District.</p>
+<a href="#join" class="hero-cta">Join Our Troop &rarr;</a>
+<div class="hero-trees">
+<svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0,120 L0,80 L30,40 L60,80 L80,50 L100,80 L130,30 L160,80 L180,60 L210,80 L240,20 L270,80 L300,50 L330,80 L350,40 L380,80 L410,25 L440,80 L470,55 L500,80 L520,35 L550,80 L580,45 L610,80 L640,20 L670,80 L700,50 L720,80 L750,30 L780,80 L810,55 L840,80 L870,25 L900,80 L930,45 L960,80 L980,35 L1010,80 L1040,50 L1070,80 L1100,20 L1130,80 L1160,40 L1190,80 L1210,55 L1240,80 L1270,30 L1300,80 L1330,50 L1360,80 L1390,35 L1420,80 L1440,60 L1440,120 Z" fill="rgba(0,0,0,0.3)"/>
+<path d="M0,120 L0,90 L40,55 L80,90 L110,65 L140,90 L170,45 L200,90 L230,70 L260,90 L290,50 L320,90 L350,60 L380,90 L420,40 L460,90 L490,65 L520,90 L550,50 L580,90 L620,55 L660,90 L690,45 L720,90 L750,70 L780,90 L810,50 L840,90 L880,40 L920,90 L950,65 L980,90 L1010,55 L1040,90 L1080,45 L1120,90 L1150,60 L1180,90 L1210,50 L1240,90 L1280,40 L1320,90 L1350,65 L1380,90 L1410,55 L1440,90 L1440,120 Z" fill="rgba(0,0,0,0.5)"/>
+</svg>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="section-inner">
+<div class="about-grid">
+<div>
+<div class="section-label">About Troop 13</div>
+<h2 class="section-title">Where Adventure Meets Character</h2>
+<div class="about-text">
+<p>Troop 13 is a Scouts BSA troop for boys based in Trumbauersville, Pennsylvania, part of the Tohickon District within the Washington Crossing Council. Our scouts camp, hike, canoe, cook, serve their community, and grow into capable, confident young men.</p>
+<p>We meet weekly at Scout Hall, generously supported by the Trumbauersville Lions Club. Our program is led by an award-winning team of adult volunteers &mdash; including a Silver Beaver recipient, multiple Tohickon Award honorees, and a Cub Scouter of the Year &mdash; who are deeply committed to every scout's development.</p>
+<p>We're closely connected to Pack 13 in Trumbauersville, and many of our scouts cross over from the pack's Arrow of Light program.</p>
+</div>
+</div>
+<div class="about-stats">
+<div class="stat-card">
+<div class="stat-num">14+</div>
+<div class="stat-label">Eagle Scouts</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">12+</div>
+<div class="stat-label">Campouts per Year</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">40+</div>
+<div class="stat-label">Merit Badges at Summer Camp</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">3</div>
+<div class="stat-label">High Adventure Camps</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ADVENTURES -->
+<section class="adventures" id="adventures">
+<div class="section-inner">
+<div class="section-label">What We Do</div>
+<h2 class="section-title">Adventures Await</h2>
+<p style="color: var(--stone); max-width: 640px; margin-bottom: 1rem;">From local trails to Florida's coast, Troop 13 scouts experience it all. Here's a look at the kinds of adventures our scouts get into throughout the year.</p>
+<div class="adventures-grid">
+<div class="adventure-card">
+<div class="card-icon">&#9978;</div>
+<h3>Summer Camp</h3>
+<p>A full week at Goose Pond Scout Reservation &mdash; merit badges, sailing, climbing, shooting sports, the Camp Adventure Race, and the Polar Bear Plunge. We've won Top Shot and the fishing derby.</p>
+</div>
+<div class="adventure-card">
+<div class="card-icon">&#127754;</div>
+<h3>High Adventure</h3>
+<p>Sea Base in the Florida Keys for snorkeling and island camping. Backpacking on the Appalachian Trail. Canoeing 18 miles on the Susquehanna River. These are the trips scouts talk about for years.</p>
+</div>
+<div class="adventure-card">
+<div class="card-icon">&#127859;</div>
+<h3>Iron Chef Weekend</h3>
+<p>Our legendary annual cooking competition. Scouts plan meals, shop on a budget, and compete in events from cracker barrel pinwheels to chili challenges to Dutch Oven dump cakes. A troop favorite.</p>
+</div>
+<div class="adventure-card">
+<div class="card-icon">&#9968;</div>
+<h3>Monthly Camping</h3>
+<p>Hickory Run State Park, Camp Trexler, Lake Nockamixon, Musser Scout Reservation, and more. We camp year-round and build real outdoor skills &mdash; fire building, knots, pioneering, orienteering.</p>
+</div>
+<div class="adventure-card">
+<div class="card-icon">&#10052;</div>
+<h3>Winter Fun</h3>
+<p>Snow tubing at Shawnee Mountain and Bear Creek. Cabin camping at Camp Minsi in the Poconos. Walking on frozen Stillwater Lake. The Klondike Derby at Ockanickon Scout Reservation.</p>
+</div>
+<div class="adventure-card">
+<div class="card-icon">&#127907;</div>
+<h3>Skills & Competitions</h3>
+<p>Tohickon Indoor Rally (we earned 1st place in fire building), Klondike Derby, fossil hunting at Beltzville Lake, orienteering hikes, and nature studies with guest instructors.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights" id="highlights">
+<div class="section-inner">
+<div class="section-label">Recent Highlights</div>
+<h2 class="section-title">From the Trail</h2>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-date">May 2026</div>
+<div class="timeline-title">Canoeing the Susquehanna</div>
+<div class="timeline-body">For the last campout of the year, the troop paddled 18 miles down the Susquehanna River in perfect weather.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">May 2026</div>
+<div class="timeline-title">Trumbauersville Borough Cleanup</div>
+<div class="timeline-body">Scouts mulched all the beds and trees at Veteran's Park for the borough. Special thanks to Mr. Provost for delivering mulch and directing the scouts.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">April 2026</div>
+<div class="timeline-title">Appalachian Trail Backpacking</div>
+<div class="timeline-body">A brand new adventure &mdash; the troop hiked 4.1 miles in on the AT, camped overnight, and hiked 4.1 miles out. An amazing natural resource right in our backyard.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">March 2026</div>
+<div class="timeline-title">Fishing Trip</div>
+<div class="timeline-body">The scouts had lots of fun on the fishing trip &mdash; though the fish had even more fun evading capture!</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">March 2026</div>
+<div class="timeline-title">Nature Merit Badge at Manderfield Reserve</div>
+<div class="timeline-body">An evening hike with packs to prepare for the AT trip, plus continued work on the Nature merit badge with Mrs. Clark.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">March 2026</div>
+<div class="timeline-title">Easter Egg Stuffing Record</div>
+<div class="timeline-body">The annual tradition with the Trumbauersville Lions Club. This year: over 1,000 eggs stuffed in just 10 minutes and 38 seconds, smashing last year's 13-minute record.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">February 2026</div>
+<div class="timeline-title">Poconos Tubing</div>
+<div class="timeline-body">Cabin stay at Camp Minsi, tubing at Shawnee Mountain, and walking on frozen Stillwater Lake.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">December 2025</div>
+<div class="timeline-title">Iron Chef Weekend</div>
+<div class="timeline-body">Two days of cooking, food safety lessons with Mr. Ficarra, competitions with Mrs. Hilton, chili challenges, Dutch Oven desserts, and a donut taste test. The final margin: 1.15 points.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">November 2025</div>
+<div class="timeline-title">Fossil Hunting &amp; Camp Trexler</div>
+<div class="timeline-body">Fossil hunting at Beltzville Lake, camping at Camp Trexler, and a food donation to the Veterans Food Pantry run by the Valor Clinic Foundation.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">September 2025</div>
+<div class="timeline-title">Camping at French Creek State Park</div>
+<div class="timeline-body">A weekend campout at French Creek State Park, September 19&ndash;21.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">October 2025</div>
+<div class="timeline-title">Camp Alpine &amp; the Intrepid</div>
+<div class="timeline-body">The troop camped at Camp Alpine in New York and visited the Intrepid Sea, Air &amp; Space Museum in NYC.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">July 2025</div>
+<div class="timeline-title">Summer Camp at Ockanickon</div>
+<div class="timeline-body">A week at Ockanickon Scout Reservation for summer camp &mdash; merit badges, outdoor skills, and a great time with the troop.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">August 2025</div>
+<div class="timeline-title">Fishing at Green Lane</div>
+<div class="timeline-body">The troop wrapped up summer with a fishing outing. Most scouts caught fish, with Noah as top fisherman landing perch and a nice bass.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">March 2025</div>
+<div class="timeline-title">Iron Chef Weekend</div>
+<div class="timeline-body">Cracker Barrel pinwheel competition, patrol breakfasts, three-bin cleaning method, pioneering kitchen gadgets, Battle of the Sauces dinner, and a fierce finish.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">February 2025</div>
+<div class="timeline-title">Snow Tubing at Bear Creek</div>
+<div class="timeline-body">A fun pre-game day of snow tubing before the Super Bowl.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">January 2025</div>
+<div class="timeline-title">Klondike Derby</div>
+<div class="timeline-body">Troop 13 ran the "Knot Knowledge and Pioneering" town at the Tohickon Klondike Derby at Ockanickon Scout Reservation.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">November 2024</div>
+<div class="timeline-title">Tohickon Indoor Rally</div>
+<div class="timeline-body">Patrols competed in knot tying, flint and steel fire building, first aid, and an 8-foot wall relay against troops across the district. Troop 13 earned the 1st place blue ribbon in fire building.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">October 2024</div>
+<div class="timeline-title">Hickory Run State Park</div>
+<div class="timeline-body">Hiking the "Shades of Death Trail" and paying respects at a 175-year-old cemetery for the victims of the devastating flood of October 30, 1849.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">September 2024</div>
+<div class="timeline-title">Valley Forge National Park</div>
+<div class="timeline-body">Touring General Washington's headquarters, seeing artillery positions, and watching a park ranger in colonial attire load and shoot a musket.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">July 2024</div>
+<div class="timeline-title">Goose Pond Summer Camp</div>
+<div class="timeline-body">A week of merit badges, sailing, climbing, fishing, shooting sports, and the Camp Adventure Race. Over 40 merit badges earned, plus Polar Bear Plunge certificates, Mile Swim, Top Shot, and the fishing derby win.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">June 2024</div>
+<div class="timeline-title">Sea Base, Florida Keys</div>
+<div class="timeline-body">Two crews flew to Florida, visited the Everglades, fed tarpons, learned about coral reef ecosystems, paddled to Big Munson Island, and snorkeled the Keys.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CALENDAR -->
+<section class="calendar" id="calendar">
+<div class="section-inner">
+<div class="section-label">Stay in the Loop</div>
+<h2 class="section-title">Troop Calendar</h2>
+<div class="calendar-embed">
+<iframe src="https://calendar.google.com/calendar/embed?src=committeechair%40troop13pa.com&ctz=America%2FNew_York" title="Troop 13 Calendar"></iframe>
+</div>
+</div>
+</section>
+
+<!-- SERVICE -->
+<section class="service" id="service">
+<div class="section-inner">
+<div class="section-label">Giving Back</div>
+<h2 class="section-title">Community Service</h2>
+<p style="color: var(--stone); max-width: 640px; margin-bottom: 0.5rem;">"Do a good turn daily." Service is at the heart of Troop 13. Our scouts regularly give back to the Trumbauersville community and beyond.</p>
+<div class="service-grid">
+<div class="service-item">
+<div class="service-icon">&#127793;</div>
+<div>
+<h3>Veteran's Park Maintenance</h3>
+<p>Annual spring cleanup, mulching, and planting at Trumbauersville's Veteran's Park to keep it beautiful for the community.</p>
+</div>
+</div>
+<div class="service-item">
+<div class="service-icon">&#129370;</div>
+<div>
+<h3>Easter Egg Stuffing</h3>
+<p>Every year, the troop stuffs eggs for the Trumbauersville Lions Club Easter Egg Hunt &mdash; and competes against their own time record.</p>
+</div>
+</div>
+<div class="service-item">
+<div class="service-icon">&#127960;</div>
+<div>
+<h3>Scout Hall Upkeep</h3>
+<p>Painting, maintaining, and improving Scout Hall &mdash; the troop's home base, provided by the Trumbauersville Lions Club.</p>
+</div>
+</div>
+<div class="service-item">
+<div class="service-icon">&#127810;</div>
+<div>
+<h3>Community Cleanups</h3>
+<p>Leaf clearing at North Penn Gun Club, mulching at Molasses Creek Park, and participating in the borough's seasonal cleanup events.</p>
+</div>
+</div>
+<div class="service-item">
+<div class="service-icon">&#129359;</div>
+<div>
+<h3>Food Pantry Support</h3>
+<p>Donating food and supplies to the Veterans Food Pantry at Camp Trexler and the Quakertown Food Pantry.</p>
+</div>
+</div>
+<div class="service-item">
+<div class="service-icon">&#127942;</div>
+<div>
+<h3>Eagle Scout Projects</h3>
+<p>Every Eagle Scout leads a major service project benefiting the community. Our scouts have built park benches, seed exchanges, shelves for food pantries, raptor cages, and more.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EAGLES -->
+<section class="eagles" id="eagles">
+<div class="section-inner">
+<div class="section-label">Eagle Scouts</div>
+<h2 class="section-title">A Tradition of Excellence</h2>
+<p style="color: var(--stone); max-width: 640px; margin-bottom: 0.5rem;">Eagle Scout is the highest rank in Scouting, earned by fewer than 6% of all scouts. Each Eagle candidate plans, organizes, and leads a community service project. Here are some of our most recent Eagles and their projects &mdash; Troop 13's Eagle legacy extends well beyond this list.</p>
+<div class="eagle-projects">
+<div class="eagle-card">
+<div class="eagle-name">Wyatt</div>
+<div class="eagle-project">Built a flower bed surrounding the flag pole at American Legion Post 242</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Joshua</div>
+<div class="eagle-project">Painted identification numbers on all fire hydrants in Trumbauersville for first responder safety</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Martin</div>
+<div class="eagle-project">Designed and built a Seed Exchange at the borough hall for the Trumbauersville community</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Will</div>
+<div class="eagle-project">Built and installed 12 new shelves at the Quakertown Food Pantry; also helped fill 95 meal bags</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Kellen</div>
+<div class="eagle-project">Built 30 "whisper phones" for Richland Elementary School to aid literacy development</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Noah</div>
+<div class="eagle-project">Built bog bridges along a hiking trail at Nockamixon State Park to prevent erosion</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Henry</div>
+<div class="eagle-project">Replaced the wood on 9 benches around the playground at Molasses Creek Park</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Ryan</div>
+<div class="eagle-project">Created over 100 care packages for a local hospice to comfort patients and families</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Orion</div>
+<div class="eagle-project">Repainted fire hydrant clearance zones throughout Trumbauersville for public safety; received a Mayoral Citation of Merit</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Matt</div>
+<div class="eagle-project">Organized a donation drive for Salfid Dog Rescue: collars, leashes, toys, bedding, and 400+ lbs of food</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Nick</div>
+<div class="eagle-project">Built a 10'x10' raptor cage for the Cricket Wildlife Rehabilitation Center in Alburtis, PA</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Makya</div>
+<div class="eagle-project">Led a clothing drive collecting 518 lbs of clothing for the Quakertown Community Outreach Closet</div>
+</div>
+<div class="eagle-card">
+<div class="eagle-name">Noah C.</div>
+<div class="eagle-project">Built basking platforms for turtles and deployed them in Lake Nockamixon</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- JOIN -->
+<section class="join" id="join">
+<div class="section-inner">
+<div class="section-label">Get Involved</div>
+<h2 class="section-title">Join Troop 13</h2>
+<p class="join-body">Whether your child is crossing over from Cub Scouts or is new to Scouting entirely, Troop 13 welcomes them. Come to a meeting, see what we're about, and discover why our scouts and families love this troop.</p>
+<div class="join-details">
+<div class="join-detail">
+<div class="detail-icon">&#128100;</div>
+<h3>Who Can Join</h3>
+<p>Boys ages 11&ndash;17, or who have completed the 5th grade and are at least 10 years old</p>
+</div>
+<div class="join-detail">
+<div class="detail-icon">&#128197;</div>
+<h3>When We Meet</h3>
+<p>Mondays at 7PM at <a href="https://maps.app.goo.gl/WqWfAnZNb1nKoapy9" target="_blank" style="color: var(--campfire);">Scout Hall</a>, behind the Trumbauersville Fire Station</p>
+</div>
+<div class="join-detail">
+<div class="detail-icon">&#128233;</div>
+<h3>Get in Touch</h3>
+<p>Visit our <a href="https://www.facebook.com/Troop13PA" target="_blank" style="color: var(--campfire);">Facebook page</a> or <a href="https://my.scouting.org/VES/OnlineReg/1.0.0/?tu=UF-MB-777taa0013" target="_blank" style="color: var(--campfire);">register online</a></p>
+</div>
+</div>
+<a href="https://my.scouting.org/VES/OnlineReg/1.0.0/?tu=UF-MB-777taa0013" target="_blank" class="join-cta">Register Online &rarr;</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>BSA Troop 13 &bull; Washington Crossing Council &bull; Tohickon District &bull; Trumbauersville, PA</p>
+<p style="margin-top: 0.3rem;">Follow us on <a href="https://www.facebook.com/Troop13PA" target="_blank">Facebook</a></p>
+</footer>
+
+</body>
+</html>
