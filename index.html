@@ -19,367 +19,537 @@
 --cream: #FDFBF7;
 --stone: #6B6560;
 --charcoal: #2C2925;
+--radius: 12px;
+--radius-lg: 20px;
+--shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+--shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+--shadow-lg: 0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 color: var(--charcoal);
 background: var(--cream);
-line-height: 1.65;
+line-height: 1.7;
 font-size: 0.95rem;
+-webkit-font-smoothing: antialiased;
 }
 
 /* ── NAV ── */
 nav {
 position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-background: rgba(91, 26, 42, 0.95);
-backdrop-filter: blur(8px);
-padding: 0 2rem;
+background: rgba(44, 41, 37, 0.85);
+backdrop-filter: blur(20px) saturate(1.8);
+-webkit-backdrop-filter: blur(20px) saturate(1.8);
+padding: 0 2.5rem;
 display: flex; align-items: center; justify-content: space-between;
-height: 56px;
-border-bottom: 2px solid var(--campfire);
+height: 60px;
+border-bottom: 1px solid rgba(255,255,255,0.08);
+transition: background 0.3s, box-shadow 0.3s;
+}
+nav.scrolled {
+background: rgba(44, 41, 37, 0.95);
+box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 nav .nav-logo {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-weight: 700; font-size: 1.1rem; color: #fff;
-letter-spacing: 0.03em;
+font-weight: 700; font-size: 1.05rem; color: #fff;
+letter-spacing: 0.08em;
 }
 nav .nav-logo span { color: var(--campfire); }
-nav ul { list-style: none; display: flex; gap: 1.5rem; }
+nav ul { list-style: none; display: flex; gap: 1.8rem; }
 nav ul li a {
-color: rgba(255,255,255,0.85); text-decoration: none;
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase;
-transition: color 0.2s;
+color: rgba(255,255,255,0.7); text-decoration: none;
+font-weight: 500;
+font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+transition: color 0.25s;
+position: relative;
 }
-nav ul li a:hover { color: var(--campfire); }
+nav ul li a::after {
+content: '';
+position: absolute; bottom: -4px; left: 0; right: 0;
+height: 1.5px; background: var(--campfire);
+transform: scaleX(0); transition: transform 0.25s;
+}
+nav ul li a:hover { color: #fff; }
+nav ul li a:hover::after { transform: scaleX(1); }
+
+/* mobile menu */
+.nav-toggle {
+display: none; background: none; border: none;
+cursor: pointer; padding: 0.5rem;
+}
+.nav-toggle span {
+display: block; width: 20px; height: 2px;
+background: #fff; margin: 4px 0;
+transition: transform 0.3s, opacity 0.3s;
+}
 
 /* ── HERO ── */
 .hero {
-min-height: 70vh;
+min-height: 85vh;
 display: flex; flex-direction: column; align-items: center; justify-content: center;
 text-align: center;
-background: linear-gradient(170deg, var(--pine) 0%, #4A0E18 40%, #2E0910 100%);
+background: linear-gradient(160deg, #1a0a0e 0%, var(--pine) 35%, #4A0E18 70%, #2E0910 100%);
 position: relative; overflow: hidden;
-padding: 6rem 2rem 10rem;
+padding: 8rem 2rem 12rem;
 }
 .hero::before {
 content: '';
 position: absolute; inset: 0;
-background: radial-gradient(ellipse at 50% 120%, rgba(212,168,67,0.15) 0%, transparent 60%);
+background:
+  radial-gradient(ellipse at 30% 20%, rgba(212,168,67,0.08) 0%, transparent 50%),
+  radial-gradient(ellipse at 70% 80%, rgba(212,168,67,0.12) 0%, transparent 40%),
+  radial-gradient(circle at 50% 50%, rgba(107,22,36,0.3) 0%, transparent 70%);
+}
+.hero::after {
+content: '';
+position: absolute; inset: 0;
+background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 .hero-badge {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+font-weight: 500;
+font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
 color: var(--campfire);
-border: 1px solid rgba(212,133,58,0.4);
-padding: 0.4rem 1.2rem; border-radius: 2px;
-margin-bottom: 2rem; position: relative;
+border: 1px solid rgba(212,168,67,0.3);
+padding: 0.5rem 1.4rem; border-radius: 100px;
+margin-bottom: 2.5rem; position: relative;
+background: rgba(212,168,67,0.06);
 }
-.hero h1 {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: clamp(3.5rem, 7vw, 6rem);
-color: #fff; line-height: 1.05;
-position: relative;
-margin-bottom: 0.5rem;
-letter-spacing: 0.04em;
-text-transform: uppercase;
+.hero-logo {
+height: 200px; margin-bottom: 1.5rem; position: relative;
+filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
 }
-.hero h1 .accent { color: var(--campfire); }
 .hero-sub {
-font-size: 1.15rem; color: rgba(255,255,255,0.7);
-max-width: 520px; margin: 1rem auto 2.5rem;
+font-size: 1.1rem; color: rgba(255,255,255,0.6);
+max-width: 480px; margin: 0.5rem auto 2.5rem;
 position: relative;
+font-weight: 400;
+line-height: 1.7;
 }
 .hero-cta {
-display: inline-flex; align-items: center; gap: 0.5rem;
-background: var(--campfire); color: #fff;
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase;
-padding: 0.85rem 2rem; border-radius: 2px;
-text-decoration: none; transition: background 0.2s;
+display: inline-flex; align-items: center; gap: 0.6rem;
+background: var(--campfire); color: var(--charcoal);
+font-weight: 600;
+font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase;
+padding: 0.9rem 2.2rem; border-radius: 100px;
+text-decoration: none;
+transition: all 0.3s;
 position: relative;
+box-shadow: 0 4px 15px rgba(212,168,67,0.3);
 }
-.hero-cta:hover { background: var(--ember); }
-/* trees silhouette */
+.hero-cta:hover {
+background: #e0b64e;
+transform: translateY(-2px);
+box-shadow: 0 6px 25px rgba(212,168,67,0.4);
+}
 .hero-trees {
-position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+position: absolute; bottom: 0; left: 0; right: 0; height: 140px;
 overflow: hidden; pointer-events: none;
 }
 .hero-trees svg { width: 100%; height: 100%; }
 
 /* ── SECTIONS ── */
-section { padding: 5rem 2rem; }
-.section-inner { max-width: 960px; margin: 0 auto; }
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 980px; margin: 0 auto; }
 
 .section-label {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-color: var(--campfire); margin-bottom: 0.5rem;
+font-weight: 600;
+font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+color: var(--campfire); margin-bottom: 0.6rem;
+display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.section-label::before {
+content: '';
+width: 20px; height: 1.5px;
+background: var(--campfire);
 }
 .section-title {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-color: var(--pine); line-height: 1.2;
-margin-bottom: 1.5rem;
-text-transform: uppercase;
-letter-spacing: 0.03em;
+font-weight: 700;
+font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+color: var(--pine); line-height: 1.15;
+margin-bottom: 1rem;
+letter-spacing: -0.01em;
 }
 
 /* ── ABOUT ── */
 .about { background: var(--parchment); }
 .about-grid {
-display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem;
 align-items: start;
 }
-.about-text p { margin-bottom: 1rem; color: var(--stone); font-size: 1.02rem; }
+.about-text p {
+margin-bottom: 1rem; color: var(--stone); font-size: 1rem;
+}
 .about-stats {
-display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
 }
 .stat-card {
 background: var(--cream);
 padding: 1.5rem;
-border-left: 3px solid var(--campfire);
+border-radius: var(--radius);
+box-shadow: var(--shadow-sm);
+border: 1px solid rgba(0,0,0,0.04);
+transition: transform 0.2s, box-shadow 0.2s;
+position: relative;
+overflow: hidden;
+}
+.stat-card::before {
+content: '';
+position: absolute; top: 0; left: 0; right: 0;
+height: 3px;
+background: linear-gradient(90deg, var(--campfire), var(--ember));
+}
+.stat-card:hover {
+transform: translateY(-2px);
+box-shadow: var(--shadow-md);
 }
 .stat-card .stat-num {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: clamp(1.3rem, 2.5vw, 2rem); color: var(--pine); line-height: 1;
+font-weight: 700;
+font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--pine); line-height: 1.2;
 }
 .stat-card .stat-label {
-font-size: 0.82rem; color: var(--trail); margin-top: 0.3rem;
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-size: 0.75rem; color: var(--trail); margin-top: 0.4rem;
+font-weight: 500;
 text-transform: uppercase; letter-spacing: 0.05em;
+line-height: 1.4;
 }
 
 /* ── ADVENTURES ── */
 .adventures { background: var(--cream); }
+.adventures-intro {
+color: var(--stone); max-width: 640px; margin-bottom: 1.5rem;
+}
 .adventures-grid {
-display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
 margin-top: 2rem;
 }
 .adventure-card {
 background: var(--parchment);
-padding: 1.8rem;
-border-top: 3px solid var(--pine);
-transition: transform 0.2s, box-shadow 0.2s;
+padding: 2rem;
+border-radius: var(--radius);
+border: 1px solid rgba(0,0,0,0.04);
+transition: all 0.3s;
+position: relative;
 }
 .adventure-card:hover {
-transform: translateY(-3px);
-box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+transform: translateY(-4px);
+box-shadow: var(--shadow-lg);
+background: #fff;
 }
 .adventure-card .card-icon {
-font-size: 1.6rem; margin-bottom: 0.8rem;
+font-size: 2rem; margin-bottom: 1rem;
+display: inline-block;
 }
 .adventure-card h3 {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-weight: 650;
 font-size: 1.05rem; color: var(--pine);
 margin-bottom: 0.5rem;
 }
 .adventure-card p {
-font-size: 0.9rem; color: var(--stone); line-height: 1.55;
+font-size: 0.88rem; color: var(--stone); line-height: 1.6;
 }
 
 /* ── HIGHLIGHTS ── */
-.highlights { background: var(--pine); color: #fff; }
+.highlights {
+background: var(--pine);
+color: #fff;
+position: relative;
+overflow: hidden;
+}
+.highlights::before {
+content: '';
+position: absolute; inset: 0;
+background:
+  radial-gradient(ellipse at 0% 0%, rgba(212,168,67,0.06) 0%, transparent 50%),
+  radial-gradient(ellipse at 100% 100%, rgba(0,0,0,0.2) 0%, transparent 50%);
+}
+.highlights .section-inner { position: relative; }
 .highlights .section-label { color: var(--campfire); }
+.highlights .section-label::before { background: var(--campfire); }
 .highlights .section-title { color: #fff; }
 .timeline {
 position: relative;
-padding-left: 2rem;
-border-left: 2px solid rgba(255,255,255,0.15);
-margin-top: 2rem;
+padding-left: 2.5rem;
+border-left: 2px solid rgba(255,255,255,0.1);
+margin-top: 2.5rem;
 }
 .timeline-item {
 position: relative;
-margin-bottom: 2rem;
-padding-bottom: 2rem;
-border-bottom: 1px solid rgba(255,255,255,0.06);
+margin-bottom: 0;
+padding: 1.5rem 0 1.5rem 0;
+border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-.timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.timeline-item:last-child { border-bottom: none; }
 .timeline-item::before {
 content: '';
-position: absolute; left: -2.35rem; top: 0.3rem;
+position: absolute; left: -2.85rem; top: 1.8rem;
 width: 10px; height: 10px;
 background: var(--campfire);
 border-radius: 50%;
-border: 2px solid var(--pine);
+box-shadow: 0 0 0 4px var(--pine), 0 0 0 5px rgba(212,168,67,0.3);
 }
 .timeline-date {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+font-weight: 600;
+font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
 color: var(--campfire); margin-bottom: 0.3rem;
 }
 .timeline-title {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 1.05rem; margin-bottom: 0.4rem;
+font-weight: 600;
+font-size: 1.05rem; margin-bottom: 0.3rem;
 }
 .timeline-body {
-font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.6;
+font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.65;
 }
 
 /* ── CALENDAR ── */
 .calendar { background: var(--cream); }
 .calendar-embed {
 margin-top: 2rem;
-border: 1px solid rgba(0,0,0,0.08);
-border-radius: 2px;
+border-radius: var(--radius);
 overflow: hidden;
+box-shadow: var(--shadow-md);
+border: 1px solid rgba(0,0,0,0.06);
 }
 .calendar-embed iframe {
 width: 100%;
-height: 500px;
+height: 520px;
 border: none;
 }
 
 /* ── SERVICE ── */
 .service { background: var(--parchment); }
+.service-intro {
+color: var(--stone); max-width: 640px; margin-bottom: 0.5rem;
+}
 .service-grid {
-display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
 margin-top: 2rem;
 }
 .service-item {
 display: flex; gap: 1rem; align-items: flex-start;
+background: var(--cream);
+padding: 1.4rem;
+border-radius: var(--radius);
+border: 1px solid rgba(0,0,0,0.04);
+transition: all 0.25s;
+}
+.service-item:hover {
+box-shadow: var(--shadow-sm);
+transform: translateY(-1px);
 }
 .service-icon {
-width: 40px; height: 40px; min-width: 40px;
-background: var(--pine); color: var(--campfire);
+width: 44px; height: 44px; min-width: 44px;
+background: linear-gradient(135deg, var(--pine), var(--forest));
+color: var(--campfire);
 display: flex; align-items: center; justify-content: center;
-font-size: 1.2rem; border-radius: 2px;
+font-size: 1.2rem; border-radius: 10px;
 }
 .service-item h3 {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 0.95rem; color: var(--pine); margin-bottom: 0.25rem;
+font-weight: 600;
+font-size: 0.95rem; color: var(--pine); margin-bottom: 0.2rem;
 }
-.service-item p { font-size: 0.88rem; color: var(--stone); }
+.service-item p { font-size: 0.85rem; color: var(--stone); line-height: 1.55; }
 
 /* ── EAGLES ── */
 .eagles { background: var(--cream); }
+.eagles-intro {
+color: var(--stone); max-width: 640px; margin-bottom: 0.5rem;
+}
 .eagle-projects {
-display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem;
+display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
 margin-top: 2rem;
 }
 .eagle-card {
 background: var(--parchment);
-padding: 1.3rem 1.5rem;
-border-left: 3px solid var(--campfire);
+padding: 1.4rem 1.5rem;
+border-radius: var(--radius);
+border: 1px solid rgba(0,0,0,0.04);
+transition: all 0.25s;
+position: relative;
+overflow: hidden;
+}
+.eagle-card::before {
+content: '';
+position: absolute; top: 0; left: 0; bottom: 0;
+width: 3px;
+background: linear-gradient(180deg, var(--campfire), var(--ember));
+}
+.eagle-card:hover {
+box-shadow: var(--shadow-sm);
+transform: translateY(-1px);
 }
 .eagle-card .eagle-name {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-weight: 650;
 font-size: 0.95rem; color: var(--pine); margin-bottom: 0.3rem;
+padding-left: 0.5rem;
 }
 .eagle-card .eagle-project {
-font-size: 0.85rem; color: var(--stone); line-height: 1.5;
+font-size: 0.85rem; color: var(--stone); line-height: 1.55;
+padding-left: 0.5rem;
 }
 
 /* ── JOIN ── */
 .join {
-background: linear-gradient(170deg, var(--pine) 0%, #4A0E18 100%);
+background: linear-gradient(160deg, #1a0a0e 0%, var(--pine) 50%, #4A0E18 100%);
 color: #fff; text-align: center;
+position: relative; overflow: hidden;
 }
+.join::before {
+content: '';
+position: absolute; inset: 0;
+background: radial-gradient(ellipse at 50% 0%, rgba(212,168,67,0.08) 0%, transparent 60%);
+}
+.join .section-inner { position: relative; }
+.join .section-label::before { background: var(--campfire); }
 .join .section-title { color: #fff; }
 .join-body {
-max-width: 600px; margin: 0 auto;
-font-size: 1.05rem; color: rgba(255,255,255,0.8);
+max-width: 580px; margin: 0 auto;
+font-size: 1.05rem; color: rgba(255,255,255,0.7);
 margin-bottom: 2rem;
+line-height: 1.75;
 }
 .join-details {
 display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-max-width: 700px; margin: 2.5rem auto;
+max-width: 720px; margin: 2.5rem auto;
 }
 .join-detail {
 text-align: center;
+background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: var(--radius);
+padding: 1.5rem 1rem;
+transition: background 0.25s;
 }
-.join-detail .detail-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.join-detail:hover {
+background: rgba(255,255,255,0.08);
+}
+.join-detail .detail-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
 .join-detail h3 {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 0.85rem; color: var(--campfire);
-text-transform: uppercase; letter-spacing: 0.05em;
-margin-bottom: 0.3rem;
+font-weight: 600;
+font-size: 0.82rem; color: var(--campfire);
+text-transform: uppercase; letter-spacing: 0.06em;
+margin-bottom: 0.4rem;
 }
-.join-detail p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+.join-detail p { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
+.join-detail a { color: var(--campfire); }
 .join-cta {
 display: inline-flex;
-background: var(--campfire); color: #fff;
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase;
-padding: 0.85rem 2.5rem; border-radius: 2px;
-text-decoration: none; transition: background 0.2s;
+background: var(--campfire); color: var(--charcoal);
+font-weight: 600;
+font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase;
+padding: 0.9rem 2.5rem; border-radius: 100px;
+text-decoration: none;
+transition: all 0.3s;
 margin-top: 1rem;
+box-shadow: 0 4px 15px rgba(212,168,67,0.3);
 }
-.join-cta:hover { background: var(--ember); }
+.join-cta:hover {
+background: #e0b64e;
+transform: translateY(-2px);
+box-shadow: 0 6px 25px rgba(212,168,67,0.4);
+}
 
 /* ── CONTACT ── */
-.contact {
-background: var(--cream);
-}
+.contact { background: var(--cream); }
 .contact-grid {
 display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
 align-items: start; margin-top: 2rem;
 }
 .contact-info p {
-color: var(--stone); font-size: 1.02rem; margin-bottom: 1rem;
+color: var(--stone); font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.7;
 }
-.contact-info a { color: var(--pine); font-weight: 600; }
+.contact-info a { color: var(--pine); font-weight: 600; text-decoration: none; }
 .contact-info a:hover { color: var(--campfire); }
 .contact-method {
 display: flex; gap: 1rem; align-items: flex-start;
-margin-bottom: 1.5rem;
+margin-bottom: 1.2rem;
+padding: 1rem;
+border-radius: var(--radius);
+transition: background 0.2s;
 }
+.contact-method:hover { background: var(--parchment); }
 .contact-method-icon {
-width: 40px; height: 40px; min-width: 40px;
-background: var(--pine); color: var(--campfire);
+width: 44px; height: 44px; min-width: 44px;
+background: linear-gradient(135deg, var(--pine), var(--forest));
+color: var(--campfire);
 display: flex; align-items: center; justify-content: center;
-font-size: 1.2rem; border-radius: 2px;
+font-size: 1.2rem; border-radius: 10px;
 }
 .contact-method h3 {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
-font-size: 0.95rem; color: var(--pine); margin-bottom: 0.2rem;
+font-weight: 600;
+font-size: 0.95rem; color: var(--pine); margin-bottom: 0.15rem;
 }
-.contact-method p { font-size: 0.9rem; color: var(--stone); }
+.contact-method p { font-size: 0.88rem; color: var(--stone); }
 .contact-form {
 background: var(--parchment); padding: 2rem;
-border-top: 3px solid var(--pine);
+border-radius: var(--radius-lg);
+box-shadow: var(--shadow-md);
+border: 1px solid rgba(0,0,0,0.04);
 }
 .contact-form h3 {
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+font-weight: 650;
 font-size: 1.1rem; color: var(--pine); margin-bottom: 1.2rem;
 }
 .gform-embed {
-border-radius: 2px; overflow: hidden;
+border-radius: var(--radius); overflow: hidden;
 }
 .gform-embed iframe {
 width: 100%; border: none;
 }
 
-@media (max-width: 768px) {
-.contact-grid { grid-template-columns: 1fr; }
-}
-
 /* ── FOOTER ── */
 footer {
-background: var(--charcoal); color: rgba(255,255,255,0.5);
-padding: 2rem;
+background: var(--charcoal); color: rgba(255,255,255,0.4);
+padding: 2.5rem 2rem;
 text-align: center;
 font-size: 0.82rem;
-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 padding-bottom: 70px;
 }
 footer a { color: var(--campfire); text-decoration: none; }
+footer a:hover { color: #e0b64e; }
+footer p + p { margin-top: 0.3rem; }
+
+/* ── SCROLL ANIMATIONS ── */
+.fade-up {
+opacity: 0;
+transform: translateY(24px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+opacity: 1;
+transform: translateY(0);
+}
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-nav ul { display: none; }
+nav ul {
+  display: none;
+  position: absolute; top: 60px; left: 0; right: 0;
+  background: rgba(44, 41, 37, 0.98);
+  backdrop-filter: blur(20px);
+  flex-direction: column; gap: 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+nav ul.open { display: flex; }
+nav ul li a {
+  display: block; padding: 0.9rem 2.5rem;
+  font-size: 0.85rem;
+}
+.nav-toggle { display: block; }
 .about-grid { grid-template-columns: 1fr; }
 .adventures-grid { grid-template-columns: 1fr; }
 .service-grid { grid-template-columns: 1fr; }
-.join-details { grid-template-columns: 1fr; gap: 1rem; }
+.join-details { grid-template-columns: 1fr; gap: 0.8rem; }
+.contact-grid { grid-template-columns: 1fr; }
+.hero { min-height: 75vh; padding: 7rem 1.5rem 10rem; }
+.hero-logo { height: 160px; }
 }
 @media (max-width: 480px) {
-section { padding: 3rem 1.2rem; }
+section { padding: 4rem 1.2rem; }
 .about-stats { grid-template-columns: 1fr; }
 }
 </style>
@@ -389,6 +559,9 @@ section { padding: 3rem 1.2rem; }
 <!-- NAV -->
 <nav>
 <div class="nav-logo">TROOP <span>13</span></div>
+<button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Toggle menu">
+<span></span><span></span><span></span>
+</button>
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#adventures">Adventures</a></li>
@@ -404,7 +577,7 @@ section { padding: 3rem 1.2rem; }
 <!-- HERO -->
 <section class="hero">
 <div class="hero-badge">Scouting America &bull; Washington Crossing Council</div>
-<img src="Troop_white_transparent.png" alt="Troop 13 - Trumbauersville, PA" style="height: 220px; margin-bottom: 1rem; position: relative;">
+<img src="Troop_white_transparent.png" alt="Troop 13 - Trumbauersville, PA" class="hero-logo">
 <p class="hero-sub">Building character, leadership, and lifelong friendships for boys in Trumbauersville, PA. Tohickon District.</p>
 <a href="#contact" class="hero-cta">Learn More &darr;</a>
 <div class="hero-trees">
@@ -419,7 +592,7 @@ section { padding: 3rem 1.2rem; }
 <section class="about" id="about">
 <div class="section-inner">
 <div class="about-grid">
-<div>
+<div class="fade-up">
 <div class="section-label">About Troop 13</div>
 <h2 class="section-title">Where Adventure Meets Character</h2>
 <div class="about-text">
@@ -428,7 +601,7 @@ section { padding: 3rem 1.2rem; }
 <p>We're closely connected to Pack 13 in Trumbauersville, and many of our scouts cross over from the pack's Arrow of Light program.</p>
 </div>
 </div>
-<div class="about-stats">
+<div class="about-stats fade-up">
 <div class="stat-card">
 <div class="stat-num">Eagle Ready</div>
 <div class="stat-label">Over 14 scouts have earned Eagle with Troop 13 in recent years</div>
@@ -453,38 +626,40 @@ section { padding: 3rem 1.2rem; }
 <!-- ADVENTURES -->
 <section class="adventures" id="adventures">
 <div class="section-inner">
+<div class="fade-up">
 <div class="section-label">What We Do</div>
 <h2 class="section-title">Adventures Await</h2>
-<p style="color: var(--stone); max-width: 640px; margin-bottom: 1rem;">From local trails to Florida's coast, Troop 13 scouts experience it all. Here's a look at the kinds of adventures our scouts get into throughout the year.</p>
+<p class="adventures-intro">From local trails to Florida's coast, Troop 13 scouts experience it all. Here's a look at the kinds of adventures our scouts get into throughout the year.</p>
+</div>
 <div class="adventures-grid">
-<div class="adventure-card">
+<div class="adventure-card fade-up">
 <div class="card-icon">&#9978;</div>
 <h3>Summer Camp</h3>
 <p>A full week at Goose Pond Scout Reservation &mdash; merit badges, sailing, climbing, shooting sports, the Camp Adventure Race, and the Polar Bear Plunge. We've won Top Shot and the fishing derby.</p>
 </div>
-<div class="adventure-card">
+<div class="adventure-card fade-up">
 <div class="card-icon">&#127754;</div>
 <h3>High Adventure</h3>
 <p>Sea Base in the Florida Keys for snorkeling and island camping. Backpacking on the Appalachian Trail. Canoeing 18 miles on the Susquehanna River. These are the trips scouts talk about for years.</p>
 </div>
-<div class="adventure-card">
+<div class="adventure-card fade-up">
 <div class="card-icon">&#127859;</div>
 <h3>Iron Chef Weekend</h3>
 <p>Our legendary annual cooking competition. Scouts plan meals, shop on a budget, and compete in events from cracker barrel pinwheels to chili challenges to Dutch Oven dump cakes. A troop favorite.</p>
 </div>
-<div class="adventure-card">
+<div class="adventure-card fade-up">
 <div class="card-icon">&#9968;</div>
 <h3>Monthly Camping</h3>
 <p>Hickory Run State Park, Camp Trexler, Lake Nockamixon, Musser Scout Reservation, and more. We camp year-round and build real outdoor skills &mdash; fire building, knots, pioneering, orienteering.</p>
 </div>
-<div class="adventure-card">
+<div class="adventure-card fade-up">
 <div class="card-icon">&#10052;</div>
 <h3>Winter Fun</h3>
 <p>Snow tubing at Shawnee Mountain and Bear Creek. Cabin camping at Camp Minsi in the Poconos. Walking on frozen Stillwater Lake. The Klondike Derby at Ockanickon Scout Reservation.</p>
 </div>
-<div class="adventure-card">
+<div class="adventure-card fade-up">
 <div class="card-icon">&#127907;</div>
-<h3>Skills & Competitions</h3>
+<h3>Skills &amp; Competitions</h3>
 <p>Tohickon Indoor Rally (we earned 1st place in fire building), Klondike Derby, fossil hunting at Beltzville Lake, orienteering hikes, and nature studies with guest instructors.</p>
 </div>
 </div>
@@ -494,9 +669,11 @@ section { padding: 3rem 1.2rem; }
 <!-- HIGHLIGHTS -->
 <section class="highlights" id="highlights">
 <div class="section-inner">
+<div class="fade-up">
 <div class="section-label">Recent Highlights</div>
 <h2 class="section-title">From the Trail</h2>
-<div class="timeline">
+</div>
+<div class="timeline fade-up">
 <div class="timeline-item">
 <div class="timeline-date">May 2026</div>
 <div class="timeline-title">Canoeing the Susquehanna</div>
@@ -608,7 +785,7 @@ section { padding: 3rem 1.2rem; }
 
 <!-- CALENDAR -->
 <section class="calendar" id="calendar">
-<div class="section-inner">
+<div class="section-inner fade-up">
 <div class="section-label">Stay in the Loop</div>
 <h2 class="section-title">Troop Calendar</h2>
 <div class="calendar-embed">
@@ -620,46 +797,48 @@ section { padding: 3rem 1.2rem; }
 <!-- SERVICE -->
 <section class="service" id="service">
 <div class="section-inner">
+<div class="fade-up">
 <div class="section-label">Giving Back</div>
 <h2 class="section-title">Community Service</h2>
-<p style="color: var(--stone); max-width: 640px; margin-bottom: 0.5rem;">"Do a good turn daily." Service is at the heart of Troop 13. Our scouts regularly give back to the Trumbauersville community and beyond.</p>
+<p class="service-intro">"Do a good turn daily." Service is at the heart of Troop 13. Our scouts regularly give back to the Trumbauersville community and beyond.</p>
+</div>
 <div class="service-grid">
-<div class="service-item">
+<div class="service-item fade-up">
 <div class="service-icon">&#127793;</div>
 <div>
 <h3>Veteran's Park Maintenance</h3>
 <p>Annual spring cleanup, mulching, and planting at Trumbauersville's Veteran's Park to keep it beautiful for the community.</p>
 </div>
 </div>
-<div class="service-item">
+<div class="service-item fade-up">
 <div class="service-icon">&#129370;</div>
 <div>
 <h3>Easter Egg Stuffing</h3>
 <p>Every year, the troop stuffs eggs for the Trumbauersville Lions Club Easter Egg Hunt &mdash; and competes against their own time record.</p>
 </div>
 </div>
-<div class="service-item">
+<div class="service-item fade-up">
 <div class="service-icon">&#127960;</div>
 <div>
 <h3>Scout Hall Upkeep</h3>
 <p>Painting, maintaining, and improving Scout Hall &mdash; the troop's home base, provided by the Trumbauersville Lions Club.</p>
 </div>
 </div>
-<div class="service-item">
+<div class="service-item fade-up">
 <div class="service-icon">&#127810;</div>
 <div>
 <h3>Community Cleanups</h3>
 <p>Leaf clearing at North Penn Gun Club, mulching at Molasses Creek Park, and participating in the borough's seasonal cleanup events.</p>
 </div>
 </div>
-<div class="service-item">
+<div class="service-item fade-up">
 <div class="service-icon">&#129359;</div>
 <div>
 <h3>Food Pantry Support</h3>
 <p>Donating food and supplies to the Veterans Food Pantry at Camp Trexler and the Quakertown Food Pantry.</p>
 </div>
 </div>
-<div class="service-item">
+<div class="service-item fade-up">
 <div class="service-icon">&#127942;</div>
 <div>
 <h3>Eagle Scout Projects</h3>
@@ -673,59 +852,61 @@ section { padding: 3rem 1.2rem; }
 <!-- EAGLES -->
 <section class="eagles" id="eagles">
 <div class="section-inner">
+<div class="fade-up">
 <div class="section-label">Eagle Scouts</div>
 <h2 class="section-title">A Tradition of Excellence</h2>
-<p style="color: var(--stone); max-width: 640px; margin-bottom: 0.5rem;">Eagle Scout is the highest rank in Scouting, earned by fewer than 6% of all scouts. Each Eagle candidate plans, organizes, and leads a community service project. Here are some of our most recent Eagles and their projects &mdash; Troop 13's Eagle legacy extends well beyond this list.</p>
+<p class="eagles-intro">Eagle Scout is the highest rank in Scouting, earned by fewer than 6% of all scouts. Each Eagle candidate plans, organizes, and leads a community service project. Here are some of our most recent Eagles and their projects &mdash; Troop 13's Eagle legacy extends well beyond this list.</p>
+</div>
 <div class="eagle-projects">
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Wyatt</div>
 <div class="eagle-project">Built a flower bed surrounding the flag pole at American Legion Post 242</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Joshua</div>
 <div class="eagle-project">Painted identification numbers on all fire hydrants in Trumbauersville for first responder safety</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Martin</div>
 <div class="eagle-project">Designed and built a Seed Exchange at the borough hall for the Trumbauersville community</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Will</div>
 <div class="eagle-project">Built and installed 12 new shelves at the Quakertown Food Pantry; also helped fill 95 meal bags</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Kellen</div>
 <div class="eagle-project">Built 30 "whisper phones" for Richland Elementary School to aid literacy development</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Noah C.</div>
 <div class="eagle-project">Built bog bridges along a hiking trail at Nockamixon State Park to prevent erosion</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Henry</div>
 <div class="eagle-project">Replaced the wood on 9 benches around the playground at Molasses Creek Park</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Ryan</div>
 <div class="eagle-project">Created over 100 care packages for a local hospice to comfort patients and families</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Orion</div>
 <div class="eagle-project">Repainted fire hydrant clearance zones throughout Trumbauersville for public safety; received a Mayoral Citation of Merit</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Matt</div>
 <div class="eagle-project">Organized a donation drive for Salfid Dog Rescue: collars, leashes, toys, bedding, and 400+ lbs of food</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Nick</div>
 <div class="eagle-project">Built a 10'x10' raptor cage for the Cricket Wildlife Rehabilitation Center in Alburtis, PA</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Makya</div>
 <div class="eagle-project">Led a clothing drive collecting 518 lbs of clothing for the Quakertown Community Outreach Closet</div>
 </div>
-<div class="eagle-card">
+<div class="eagle-card fade-up">
 <div class="eagle-name">Noah H.</div>
 <div class="eagle-project">Built basking platforms for turtles and deployed them in Lake Nockamixon</div>
 </div>
@@ -740,20 +921,20 @@ section { padding: 3rem 1.2rem; }
 <h2 class="section-title">Join Troop 13</h2>
 <p class="join-body">Whether your child is crossing over from Cub Scouts or is new to Scouting entirely, Troop 13 welcomes them. Come to a meeting, see what we're about, and discover why our scouts and families love this troop.</p>
 <div class="join-details">
-<div class="join-detail">
+<div class="join-detail fade-up">
 <div class="detail-icon">&#128100;</div>
 <h3>Who Can Join</h3>
 <p>Boys ages 11&ndash;17, or who have completed the 5th grade and are at least 10 years old</p>
 </div>
-<div class="join-detail">
+<div class="join-detail fade-up">
 <div class="detail-icon">&#128197;</div>
 <h3>When We Meet</h3>
-<p>Mondays at 7PM at <a href="https://maps.app.goo.gl/WqWfAnZNb1nKoapy9" target="_blank" style="color: var(--campfire);">Scout Hall</a>, behind the Trumbauersville Fire Station</p>
+<p>Mondays at 7PM at <a href="https://maps.app.goo.gl/WqWfAnZNb1nKoapy9" target="_blank">Scout Hall</a>, behind the Trumbauersville Fire Station</p>
 </div>
-<div class="join-detail">
+<div class="join-detail fade-up">
 <div class="detail-icon">&#128233;</div>
 <h3>Get in Touch</h3>
-<p>Visit our <a href="https://www.facebook.com/Troop13PA" target="_blank" style="color: var(--campfire);">Facebook page</a> or <a href="https://my.scouting.org/VES/OnlineReg/1.0.0/?tu=UF-MB-777taa0013" target="_blank" style="color: var(--campfire);">register online</a></p>
+<p>Visit our <a href="https://www.facebook.com/Troop13PA" target="_blank">Facebook page</a> or <a href="https://my.scouting.org/VES/OnlineReg/1.0.0/?tu=UF-MB-777taa0013" target="_blank">register online</a></p>
 </div>
 </div>
 <a href="https://my.scouting.org/VES/OnlineReg/1.0.0/?tu=UF-MB-777taa0013" target="_blank" class="join-cta">Register Online &rarr;</a>
@@ -763,10 +944,12 @@ section { padding: 3rem 1.2rem; }
 <!-- CONTACT -->
 <section class="contact" id="contact">
 <div class="section-inner">
+<div class="fade-up">
 <div class="section-label">Get in Touch</div>
 <h2 class="section-title">Contact Us</h2>
+</div>
 <div class="contact-grid">
-<div class="contact-info">
+<div class="contact-info fade-up">
 <p>Have questions about Troop 13? Thinking about joining? Want to learn more about Scouting for your child? We'd love to hear from you.</p>
 <div class="contact-method">
 <div class="contact-method-icon">&#128233;</div>
@@ -790,10 +973,10 @@ section { padding: 3rem 1.2rem; }
 </div>
 </div>
 </div>
-<div class="contact-form" id="contactForm">
+<div class="contact-form fade-up" id="contactForm">
 <h3>Send Us a Message</h3>
 <div class="gform-embed">
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfhcxMmm-4UtNNTs_wJeZKYTiX8f0jdrjU0RmMrneTjUK-mkg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" title="Contact Troop 13">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfhcxMmm-4UtNNTs_wJeZKYTiX8f0jdrjU0RmMrneTjUK-mkg/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" title="Contact Troop 13">Loading&hellip;</iframe>
 </div>
 </div>
 </div>
@@ -803,9 +986,26 @@ section { padding: 3rem 1.2rem; }
 <!-- FOOTER -->
 <footer>
 <p>Scouting America Troop 13 &bull; Washington Crossing Council &bull; Tohickon District &bull; Trumbauersville, PA</p>
-<p style="margin-top: 0.3rem;">Follow us on <a href="https://www.facebook.com/Troop13PA" target="_blank">Facebook</a></p>
+<p>Follow us on <a href="https://www.facebook.com/Troop13PA" target="_blank">Facebook</a></p>
 </footer>
 
+<script>
+// Scroll animations
+const obs = new IntersectionObserver((entries) => {
+entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('nav ul li a').forEach(a => {
+a.addEventListener('click', () => document.querySelector('nav ul').classList.remove('open'));
+});
+</script>
 
 </body>
 </html>
