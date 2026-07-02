@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/troop13_fav.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dues | Scouting America Troop 13</title>
+<style>
+:root {
+--pine: #6B1624;
+--forest: #862038;
+--bark: #5C4033;
+--trail: #8B7355;
+--campfire: #D4A843;
+--ember: #C09530;
+--sky: #E8DDD0;
+--parchment: #F5F0E8;
+--cream: #FDFBF7;
+--stone: #6B6560;
+--charcoal: #2C2925;
+--radius: 12px;
+--radius-lg: 20px;
+--shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+--shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+--shadow-lg: 0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+color: var(--charcoal);
+background: var(--cream);
+line-height: 1.7;
+font-size: 0.95rem;
+-webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+background: rgba(44, 41, 37, 0.85);
+backdrop-filter: blur(20px) saturate(1.8);
+-webkit-backdrop-filter: blur(20px) saturate(1.8);
+padding: 0 2.5rem;
+display: flex; align-items: center; justify-content: space-between;
+height: 60px;
+border-bottom: 1px solid rgba(255,255,255,0.08);
+transition: background 0.3s, box-shadow 0.3s;
+}
+nav.scrolled {
+background: rgba(44, 41, 37, 0.95);
+box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+nav .nav-logo {
+font-weight: 700; font-size: 1.05rem; color: #fff;
+letter-spacing: 0.08em;
+text-decoration: none;
+}
+nav .nav-logo span { color: var(--campfire); }
+nav .nav-right {
+display: flex; align-items: center; gap: 1.5rem;
+}
+nav ul { list-style: none; display: flex; gap: 1.8rem; }
+nav ul li a {
+color: rgba(255,255,255,0.7); text-decoration: none;
+font-weight: 500;
+font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+transition: color 0.25s;
+position: relative;
+}
+nav ul li a::after {
+content: '';
+position: absolute; bottom: -4px; left: 0; right: 0;
+height: 1.5px; background: var(--campfire);
+transform: scaleX(0); transition: transform 0.25s;
+}
+nav ul li a:hover { color: #fff; }
+nav ul li a:hover::after { transform: scaleX(1); }
+.nav-donate {
+background: var(--campfire); color: var(--charcoal);
+font-weight: 600; font-size: 0.75rem;
+letter-spacing: 0.06em; text-transform: uppercase;
+padding: 0.45rem 1.1rem; border-radius: 100px;
+text-decoration: none; transition: all 0.25s;
+white-space: nowrap;
+}
+.nav-donate:hover {
+background: #e0b64e;
+transform: translateY(-1px);
+box-shadow: 0 3px 10px rgba(212,168,67,0.35);
+}
+.nav-toggle {
+display: none; background: none; border: none;
+cursor: pointer; padding: 0.5rem;
+}
+.nav-toggle span {
+display: block; width: 20px; height: 2px;
+background: #fff; margin: 4px 0;
+transition: transform 0.3s, opacity 0.3s;
+}
+
+/* PAGE HEADER (hero-style, shorter) */
+.page-hero {
+min-height: 42vh;
+display: flex; flex-direction: column; align-items: center; justify-content: center;
+text-align: center;
+background: linear-gradient(160deg, #1a0a0e 0%, var(--pine) 35%, #4A0E18 70%, #2E0910 100%);
+position: relative; overflow: hidden;
+padding: 8rem 2rem 4rem;
+}
+.page-hero::before {
+content: '';
+position: absolute; inset: 0;
+background:
+  radial-gradient(ellipse at 30% 20%, rgba(212,168,67,0.08) 0%, transparent 50%),
+  radial-gradient(ellipse at 70% 80%, rgba(212,168,67,0.12) 0%, transparent 40%),
+  radial-gradient(circle at 50% 50%, rgba(107,22,36,0.3) 0%, transparent 70%);
+}
+.page-hero .hero-badge {
+font-weight: 500;
+font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+color: var(--campfire);
+border: 1px solid rgba(212,168,67,0.3);
+padding: 0.5rem 1.4rem; border-radius: 100px;
+margin-bottom: 1.5rem; position: relative;
+background: rgba(212,168,67,0.06);
+}
+.page-hero h1 {
+position: relative;
+font-weight: 700;
+font-size: clamp(2rem, 4vw, 3rem);
+color: #fff; line-height: 1.15;
+letter-spacing: -0.01em;
+}
+.page-hero .hero-sub {
+font-size: 1.05rem; color: rgba(255,255,255,0.6);
+max-width: 520px; margin: 1rem auto 0;
+position: relative;
+}
+
+/* SECTIONS */
+section { padding: 4.5rem 2rem; }
+.section-inner { max-width: 720px; margin: 0 auto; }
+.section-label {
+font-weight: 600;
+font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+color: var(--campfire); margin-bottom: 0.6rem;
+display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.section-label::before {
+content: '';
+width: 20px; height: 1.5px;
+background: var(--campfire);
+}
+.section-title {
+font-weight: 700;
+font-size: clamp(1.6rem, 3vw, 2.2rem);
+color: var(--pine); line-height: 1.15;
+margin-bottom: 1rem;
+letter-spacing: -0.01em;
+}
+.lead {
+color: var(--stone); font-size: 1rem; margin-bottom: 1.5rem;
+}
+
+/* PAY DUES */
+.pay { background: var(--parchment); }
+.pay-card {
+background: var(--cream);
+padding: 2.5rem;
+border-radius: var(--radius-lg);
+box-shadow: var(--shadow-md);
+border: 1px solid rgba(0,0,0,0.04);
+margin-top: 1.5rem;
+text-align: center;
+}
+.pay-card h3 {
+font-weight: 650; font-size: 1.15rem; color: var(--pine); margin-bottom: 0.5rem;
+}
+.pay-card p { color: var(--stone); font-size: 0.92rem; margin-bottom: 1.5rem; }
+#paypal-container-VW6V34DYJNVEL {
+max-width: 320px; margin: 0 auto;
+}
+.pay-fallback {
+margin-top: 1.25rem; font-size: 0.85rem; color: var(--stone);
+}
+.pay-fallback a { color: var(--pine); font-weight: 600; }
+
+/* DUES LIST (gated) */
+.list { background: var(--cream); }
+.gate {
+background: var(--parchment);
+padding: 2.5rem;
+border-radius: var(--radius-lg);
+box-shadow: var(--shadow-md);
+border: 1px solid rgba(0,0,0,0.04);
+margin-top: 1.5rem;
+max-width: 460px;
+}
+.gate h3 { font-weight: 650; font-size: 1.1rem; color: var(--pine); margin-bottom: 0.4rem; }
+.gate p { color: var(--stone); font-size: 0.9rem; margin-bottom: 1.2rem; }
+.gate-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.gate input[type="password"] {
+flex: 1; min-width: 180px;
+padding: 0.7rem 1rem;
+border: 1px solid rgba(0,0,0,0.15);
+border-radius: 100px;
+font-size: 0.95rem;
+font-family: inherit;
+background: var(--cream);
+}
+.gate input[type="password"]:focus {
+outline: none; border-color: var(--campfire);
+box-shadow: 0 0 0 3px rgba(212,168,67,0.2);
+}
+.gate button {
+background: var(--campfire); color: var(--charcoal);
+font-weight: 600; font-size: 0.8rem;
+letter-spacing: 0.06em; text-transform: uppercase;
+padding: 0.7rem 1.6rem; border: none; border-radius: 100px;
+cursor: pointer; transition: all 0.25s;
+}
+.gate button:hover { background: #e0b64e; transform: translateY(-1px); }
+.gate-error {
+color: var(--forest); font-size: 0.85rem; font-weight: 600;
+margin-top: 0.9rem; display: none;
+}
+.gate-error.show { display: block; }
+
+.dues-embed { margin-top: 1.5rem; display: none; }
+.dues-embed.show { display: block; }
+.doc-frame {
+border-radius: var(--radius);
+overflow: hidden;
+box-shadow: var(--shadow-md);
+border: 1px solid rgba(0,0,0,0.06);
+background: #fff;
+}
+.doc-frame iframe {
+width: 100%; height: 640px; border: none; display: block;
+}
+.doc-link {
+margin-top: 1rem; font-size: 0.85rem; color: var(--stone);
+}
+.doc-link a { color: var(--pine); font-weight: 600; }
+
+/* FOOTER */
+footer {
+background: var(--charcoal); color: rgba(255,255,255,0.4);
+padding: 2.5rem 2rem;
+text-align: center;
+font-size: 0.82rem;
+padding-bottom: 70px;
+}
+footer a { color: var(--campfire); text-decoration: none; }
+footer a:hover { color: #e0b64e; }
+footer p + p { margin-top: 0.3rem; }
+
+/* SCROLL ANIMATIONS */
+.fade-up {
+opacity: 0; transform: translateY(24px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+nav ul {
+  display: none;
+  position: absolute; top: 60px; left: 0; right: 0;
+  background: rgba(44, 41, 37, 0.98);
+  backdrop-filter: blur(20px);
+  flex-direction: column; gap: 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+nav ul.open { display: flex; }
+nav ul li a { display: block; padding: 0.9rem 2.5rem; font-size: 0.85rem; }
+.nav-toggle { display: block; }
+.nav-right { gap: 0.8rem; }
+.page-hero { min-height: 38vh; padding: 7rem 1.5rem 3rem; }
+}
+@media (max-width: 480px) {
+section { padding: 3rem 1.2rem; }
+.pay-card, .gate { padding: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<a href="index.html" class="nav-logo">TROOP <span>13</span></a>
+<button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Toggle menu">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-right">
+<ul>
+<li><a href="index.html#about">About</a></li>
+<li><a href="index.html#adventures">Adventures</a></li>
+<li><a href="index.html#highlights">Highlights</a></li>
+<li><a href="index.html#calendar">Calendar</a></li>
+<li><a href="index.html#service">Service</a></li>
+<li><a href="index.html#eagles">Eagle Scouts</a></li>
+<li><a href="index.html#join">Join Us</a></li>
+<li><a href="dues.html">Dues</a></li>
+<li><a href="index.html#contact">Contact</a></li>
+</ul>
+<a href="https://www.paypal.com/ncp/payment/X7LHS5SNGFNVJ" target="_blank" class="nav-donate">Donate</a>
+</div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-hero">
+<div class="hero-badge">Scouting America &bull; Washington Crossing Council</div>
+<h1>Troop 13 Dues</h1>
+<p class="hero-sub">Pay your annual dues online, and check the current dues list for your scout.</p>
+</section>
+
+<!-- PAY DUES -->
+<section class="pay">
+<div class="section-inner fade-up">
+<div class="section-label">Pay Online</div>
+<h2 class="section-title">Pay Your Dues</h2>
+<p class="lead">Use the secure PayPal button below to pay your scout's dues. You can pay with a PayPal account, a credit/debit card, or Venmo &mdash; no PayPal account required.</p>
+<div class="pay-card">
+<h3>Troop 13 Dues</h3>
+<p>Click below to pay securely through PayPal.</p>
+<!-- PayPal hosted button -->
+<div id="paypal-container-VW6V34DYJNVEL"></div>
+<div class="pay-fallback">
+Button not loading? <a href="https://www.paypal.com/ncp/payment/X7LHS5SNGFNVJ" target="_blank">Pay via this PayPal link instead &rarr;</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DUES LIST (password protected) -->
+<section class="list">
+<div class="section-inner fade-up">
+<div class="section-label">For Troop Families</div>
+<h2 class="section-title">Current Dues List</h2>
+<p class="lead">This list shows what each scout has paid and still owes. It's kept for troop families &mdash; enter the troop password to view it.</p>
+
+<!-- Password gate -->
+<div class="gate" id="gate">
+<h3>Enter Troop Password</h3>
+<p>Ask a troop leader if you don't know the password.</p>
+<div class="gate-row">
+<input type="password" id="duesPassword" placeholder="Password" autocomplete="off"
+       onkeydown="if(event.key==='Enter'){checkDuesPassword();}">
+<button onclick="checkDuesPassword()">View List</button>
+</div>
+<div class="gate-error" id="gateError">That password isn't right. Try again or ask a troop leader.</div>
+</div>
+
+<!-- Dues list (revealed after password) -->
+<div class="dues-embed" id="duesEmbed">
+<div class="doc-frame">
+<iframe src="https://docs.google.com/document/d/1_xei3Tm2HKheTTh-HjnHU182-GyeXmR5G5VhUe2UQPc/preview" title="Troop 13 Dues List"></iframe>
+</div>
+<p class="doc-link">Trouble viewing? <a href="https://docs.google.com/document/d/1_xei3Tm2HKheTTh-HjnHU182-GyeXmR5G5VhUe2UQPc/edit?usp=sharing" target="_blank">Open the dues list in Google Docs &rarr;</a></p>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>Scouting America Troop 13 &bull; Washington Crossing Council &bull; Tohickon District &bull; Trumbauersville, PA</p>
+<p>Follow us on <a href="https://www.facebook.com/Troop13PA" target="_blank">Facebook</a> &bull; <a href="https://www.paypal.com/ncp/payment/X7LHS5SNGFNVJ" target="_blank">Donate</a></p>
+</footer>
+
+<!-- PayPal SDK (hosted buttons) -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAAfSHcn-3eq7t3ixKmznl2KAQa17DqdZTFgFn8GgicZ7uPz6RfGJfVDKytgqIOZG4UE7niwdeN5P9Rk8A&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
+<script>
+  if (window.paypal && paypal.HostedButtons) {
+    paypal.HostedButtons({
+      hostedButtonId: "VW6V34DYJNVEL",
+    }).render("#paypal-container-VW6V34DYJNVEL");
+  }
+</script>
+
+<script>
+// ── DUES LIST PASSWORD ──
+// NOTE: This is a light barrier only. Anyone who views the page source can
+// find this password, and the Google Doc link is visible in the HTML too.
+// It keeps the list off search engines and away from casual visitors, but it
+// is NOT strong security. For real protection, use your host's password
+// feature (e.g. Netlify password protection) or keep sensitive data out.
+// Change the password below to whatever the troop shares.
+var DUES_PASSWORD = "troop13";
+
+function checkDuesPassword() {
+  var entered = document.getElementById('duesPassword').value.trim();
+  var err = document.getElementById('gateError');
+  if (entered.toLowerCase() === DUES_PASSWORD.toLowerCase()) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('duesEmbed').classList.add('show');
+    err.classList.remove('show');
+  } else {
+    err.classList.add('show');
+  }
+}
+
+// Scroll animations
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(function(el) { obs.observe(el); });
+
+// Nav scroll effect
+window.addEventListener('scroll', function() {
+  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('nav ul li a').forEach(function(a) {
+  a.addEventListener('click', function() { document.querySelector('nav ul').classList.remove('open'); });
+});
+</script>
+
+</body>
+</html>
