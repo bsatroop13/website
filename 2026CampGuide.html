@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Goose Pond 2026 — Pre-Camp Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2a3d22; --olive: #3d4a2e; --olive-lt: #4f6038;
+  --tan: #c8a96e; --tan-lt: #e8d5ae; --cream: #f5f0e8;
+  --rust: #a04030; --sky: #4a7a8a; --paper: #faf7f2;
+  --ink: #1e2018; --mid: #5a5a50; --done: #27ae60;
+  --radius: 10px; --shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.55; }
+
+/* HERO */
+.hero { background: var(--forest); padding: 36px 24px 30px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,0.02) 20px,rgba(255,255,255,0.02) 40px); }
+.hero-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.hero-badge { width: 56px; height: 56px; border-radius: 50%; background: var(--tan); color: var(--forest); display: flex; align-items: center; justify-content: center; font-size: 30px; flex-shrink: 0; }
+.hero-camp-name { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 3px; color: var(--tan); text-transform: uppercase; margin-bottom: 2px; }
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: 38px; line-height: 1; color: white; }
+.hero-title span { color: var(--tan); }
+.hero-meta { margin-top: 16px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,0.7); }
+
+/* NAV */
+.toc { max-width: 880px; margin: 0 auto; padding: 18px 24px; display: flex; gap: 10px 18px; flex-wrap: wrap; justify-content: center; background: var(--paper); border-bottom: 1px solid var(--tan-lt); position: sticky; top: 0; z-index: 50; }
+.toc a { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 1.5px; color: var(--olive); text-decoration: none; padding: 4px 2px; }
+.toc a.section-link { color: var(--forest); }
+
+/* CONTENT */
+.content { max-width: 880px; margin: 0 auto; padding: 0 20px 80px; }
+.section { padding-top: 32px; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; color: var(--forest); margin-bottom: 18px; }
+.section-title .sub { display: block; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 1px; color: var(--mid); font-weight: 600; text-transform: uppercase; margin-top: 4px; }
+
+/* CARDS */
+.card { background: white; border-radius: var(--radius); border: 1.5px solid var(--tan-lt); box-shadow: var(--shadow); margin-bottom: 14px; overflow: hidden; }
+.card-head { padding: 13px 18px 11px; background: var(--cream); border-bottom: 1px solid var(--tan-lt); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+.card-head h3 { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.5px; color: var(--forest); font-weight: normal; }
+.tag { font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: white; background: var(--tan); padding: 3px 9px; border-radius: 99px; }
+.tag-red { background: var(--rust); }
+.card-body { padding: 16px 18px 18px; }
+.card-body p { margin-bottom: 10px; font-size: 14px; }
+.card-body p:last-child { margin-bottom: 0; }
+.card-body strong { font-weight: 700; color: var(--forest); }
+.card-body ul { margin: 8px 0 10px 20px; font-size: 13.5px; }
+.card-body li { margin-bottom: 6px; }
+.card-body li::marker { color: var(--tan); }
+a { color: var(--olive); }
+
+/* TABLES */
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; }
+th { text-align: left; padding: 9px 10px; background: var(--olive); color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.5px; font-weight: normal; }
+td { padding: 9px 10px; border-bottom: 1px solid var(--tan-lt); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--cream); }
+
+/* SCOUT SCHEDULE CARDS */
+.scout-card { background: white; border-radius: var(--radius); border: 1.5px solid var(--tan-lt); box-shadow: var(--shadow); margin-bottom: 14px; overflow: hidden; }
+.scout-header { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 18px 10px; background: var(--cream); border-bottom: 1px solid var(--tan-lt); flex-wrap: wrap; gap: 4px; }
+.scout-name { font-family: 'Bebas Neue', sans-serif; font-size: 19px; color: var(--forest); letter-spacing: 0.5px; }
+.scout-rank { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--mid); }
+.scout-body { padding: 14px 18px 16px; }
+.schedule-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.slot { flex: 1; min-width: 100px; padding: 8px 9px; background: var(--paper); border: 1px solid var(--tan-lt); border-radius: 6px; text-align: center; }
+.slot .time { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--mid); margin-bottom: 3px; }
+.slot .bname { font-size: 12.5px; }
+.slot.eagle { background: var(--tan-lt); border-color: var(--tan); }
+.slot.eagle .bname { color: var(--forest); font-weight: 600; }
+.slot.double { flex: 2; min-width: 210px; }
+.etag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 8px; background: var(--rust); color: #fff; padding: 1px 5px; border-radius: 3px; vertical-align: middle; margin-left: 3px; letter-spacing: 0.5px; text-transform: uppercase; }
+.adv-note { font-size: 13px; color: var(--forest); padding: 10px 14px; background: var(--cream); border-left: 3px solid var(--olive); border-radius: 0 6px 6px 0; }
+
+.legend { display: flex; gap: 20px; justify-content: center; margin: 14px 0 6px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--mid); }
+.lswatch { width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--tan-lt); }
+.lswatch.e { background: var(--tan-lt); border-color: var(--tan); }
+.lswatch.r { background: var(--paper); }
+
+/* CHECKLIST */
+.checklist { list-style: none; }
+.checklist li { padding: 9px 0 9px 30px; border-bottom: 1px solid var(--tan-lt); font-size: 13.5px; position: relative; }
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+  content: ''; position: absolute; left: 0; top: 9px; width: 18px; height: 18px;
+  border: 2px solid var(--tan); border-radius: 5px; background: white;
+}
+
+.divider { border: none; border-top: 3px solid var(--tan); max-width: 220px; margin: 44px auto 0; }
+.divider-thin { height: 8px; }
+
+.app-callout { display: flex; align-items: center; gap: 10px; background: var(--olive); border-radius: var(--radius); padding: 12px 16px; margin: 14px 0; }
+.app-callout a { color: var(--tan); font-weight: 700; text-decoration: underline; }
+.app-callout p { color: white; font-size: 13.5px; margin: 0; }
+
+@media print {
+  .toc { display: none; }
+  .card, .scout-card { break-inside: avoid; }
+}
+@media (max-width: 600px) {
+  .hero-title { font-size: 28px; }
+  .slot { min-width: 85px; }
+  .card-head { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🏕️</div>
+    <div>
+      <div class="hero-camp-name">Goose Pond · 2026</div>
+      <div class="hero-title">Troop 13 <span>Pre-Camp Guide</span></div>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <span>Session 4: Jul 19–25</span>
+    <span>Lenape Site (shared w/ Troop 265)</span>
+    <span>Lake Ariel, PA</span>
+  </div>
+</div>
+
+<nav class="toc">
+  <a class="section-link" href="#contact">Contact</a>
+  <a class="section-link" href="#families">Scouts &amp; Families</a>
+  <a href="#pack">Packing</a>
+  <a href="#camp">At Camp</a>
+  <a href="#badges">Badges</a>
+  <a href="#advancement">Advancement</a>
+  <a class="section-link" href="#leaders">Leaders</a>
+  <a href="#checklist">Checklist</a>
+</nav>
+
+<div class="content">
+
+  <!-- ================= CONTACT & EMERGENCY ================= -->
+  <div class="section" id="contact" style="padding-top: 28px;">
+
+    <div class="card" style="border-color: var(--rust); border-width: 2px;">
+      <div class="card-head" style="background: var(--rust);">
+        <h3 style="color: white;">Leader Contact &amp; Emergency Info</h3>
+      </div>
+      <div class="card-body">
+        <p><strong>Two leaders are at camp all week. Save these numbers before Sunday.</strong></p>
+        <table>
+          <thead><tr><th>Leader</th><th>Cell</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Chad Clark</strong></td><td><a href="tel:4842392526">(484) 239-2526</a></td></tr>
+            <tr><td><strong>Christie Gera</strong></td><td><a href="tel:2673775907">(267) 377-5907</a></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px;"><strong>Camp Office:</strong> <a href="tel:5706892561">(570) 689-2561</a> — Goose Pond Scout Reservation, 1047 Goose Pond Road, Lake Ariel, PA 18436</p>
+        <p style="margin-top:10px; padding-top:10px; border-top:1px solid var(--tan-lt);"><strong>Cell coverage at camp is average and varies by carrier.</strong> If you can't reach us, try the camp office. A parent group text will be set up before camp for troop updates — details coming soon.</p>
+        <p style="margin-top:10px; padding-top:10px; border-top:1px solid var(--tan-lt);"><strong>If your scout is sick or injured:</strong> Camp's Health Lodge is on-site. Once any situation is handled, we will contact you immediately — whether it requires a parent visit or not. In a true emergency, camp staff and leaders will reach out right away.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= SCOUTS & FAMILIES ================= -->
+  <div class="section" id="families">
+    <div class="section-title">For Scouts &amp; Families</div>
+
+    <div class="card">
+      <div class="card-head"><h3>Medical Forms</h3><span class="tag tag-red">Required</span></div>
+      <div class="card-body">
+        <p><strong>Every scout needs a current <a href="https://filestore.scouting.org/filestore/healthsafety/pdf/680-001_abc.pdf">BSA Annual Health &amp; Medical Record</a> (Parts A, B1, B2, and C).</strong> Scouts without a properly completed form will be sent home after 24 hours.</p>
+        <ul>
+          <li>Parent/guardian AND youth signatures on Part A.</li>
+          <li>Medical evaluation by a physician within 12 months of camp.</li>
+          <li>Insurance info on Part B or insurance card copy (front &amp; back) attached.</li>
+          <li>Tetanus shot within 10 years of July 2026.</li>
+          <li>Restrictions clearly marked.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Medications</h3></div>
+      <div class="card-body">
+        <ul>
+          <li>All meds in <strong>original bottles</strong>.</li>
+          <li>Each scout's meds in a clear plastic bag labeled: <strong>name, when to take, how much</strong>.</li>
+          <li>Collected at Sunday check-in, distributed by Health Officer all week.</li>
+          <li>Scouts with <strong>epi-pens or inhalers</strong> carry them in their day bag and must know how to use them.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Pre-Requisites</h3><span class="tag">Do Before Camp</span></div>
+      <div class="card-body">
+        <p>Each scout's merit badge pre-requisites are specific to their schedule this year. If the pre-work isn't done, the badge can't be finished during the week — bring any written work, projects, or materials with you.</p>
+        <div class="app-callout">
+          <span style="font-size:20px;">📲</span>
+          <p>Use the <a href="https://christiegera.github.io/GoosePond2026/">Camp Prep app</a> to check off your personal pre-reqs as you go — tap your name to see your list.</p>
+        </div>
+        <p style="margin-top:14px; padding-top:12px; border-top:1px solid var(--tan-lt);"><strong>ATV Riders: Kyle &amp; Adam</strong></p>
+        <ul>
+          <li>Completed participation &amp; hold-harmless waiver AND ASI General Release (both signed by scout AND parent).</li>
+          <li>Online pre-course at <strong><a href="https://cbt.svia.org/login/index.php">cbt.svia.org</a></strong> — print the completion certificate. Takes 1–2 hours.</li>
+          <li>Long sleeve shirt, long pants, over-the-ankle shoes/boots.</li>
+          <li>$35 fee at check-in.</li>
+        </ul>
+        <p style="margin-top:14px; padding-top:12px; border-top:1px solid var(--tan-lt);"><strong>Finishing a Partial Badge</strong></p>
+        <ul>
+          <li>If a scout is finishing a badge they started but didn't complete previously (a "partial"), bring the blue card to camp.</li>
+          <li>Present it to the Program Area Director for that badge on <strong>Sunday or Monday</strong> — they'll work out with the scout what's left to do and when.</li>
+          <li>Previously completed work may or may not be accepted as-is — the counselor can ask the scout to demonstrate the knowledge or skill again, even with a signed partial card.</li>
+          <li>Partials are valid until the scout turns 18, as long as they can show they're still current on the material.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PACKING ================= -->
+  <div class="section" id="pack">
+    <div class="section-title">What to Pack</div>
+
+    <div class="card">
+      <div class="card-head"><h3>Personal Gear</h3></div>
+      <div class="card-body">
+        <table>
+          <thead><tr><th>Category</th><th>Items</th></tr></thead>
+          <tbody>
+            <tr><td>Uniforms</td><td>Class A (official shirt, belt, shorts/pants, socks) for evening retreat &amp; dinner only. Scout T-shirt(s) and regular shirts/shorts for daytime.</td></tr>
+            <tr><td>Clothing</td><td>Underwear &amp; socks for 6+ days. Jacket/sweatshirt. Hat/cap. Rain gear. Swimwear.</td></tr>
+            <tr><td>Footwear</td><td>Hiking boots. Athletic shoes. Old shoes for boating. Water shoes. <strong>Closed-toe shower shoes.</strong></td></tr>
+            <tr><td>Sleep</td><td>Sleeping bag or blankets. Pillow. (Cots and tents provided.)</td></tr>
+            <tr><td>Hygiene</td><td>Towels, soap, shampoo, toothbrush. <strong>Sunscreen. Bug spray (non-aerosol).</strong></td></tr>
+            <tr><td>Essentials</td><td><strong>Water bottle.</strong> Flashlight + batteries. Watch. Pocketknife. Personal first aid kit. Daypack.</td></tr>
+            <tr><td>Scouting</td><td>Scout Handbook. Merit badge books for your badges. Pre-req materials. <strong>Blue merit badge cards</strong> (issued by leader). Notebook, pencil.</td></tr>
+            <tr><td>Optional</td><td>Fishing gear. Camera. Camp chair. Spending money in a labeled wallet (lock it up).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Troop Gear</h3></div>
+      <div class="card-body">
+        <ul>
+          <li><strong>American flag and Troop 13 flag</strong> — post at your site for daily ceremonies.</li>
+          <li>Patrol flags. Orange water cooler. Bow saws, extra rope.</li>
+          <li>Antibacterial soap &amp; hand sanitizer (pump bottles). Troop first aid kit.</li>
+          <li>Merit badge pamphlets &amp; blue cards. Lanterns.</li>
+          <li>Retired flags if doing a flag retirement ceremony.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Do NOT Bring</h3><span class="tag tag-red">Prohibited</span></div>
+      <div class="card-body">
+        <p>Fireworks. Firearms/ammo. Sheath knives. Alcohol. Drugs. Tobacco/vape. Aerosol cans. Glass containers. Candles/open flames. Pets. Gasoline/kerosene. Personal bikes (unless Cycling MB). <strong>No food in campsites</strong> (bears).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= AT CAMP ================= -->
+  <div class="section" id="camp">
+    <div class="section-title">At Camp</div>
+
+    <div class="card">
+      <div class="card-head"><h3>Our Site: Lenape</h3><span class="tag">Shared w/ Troop 265</span></div>
+      <div class="card-body">
+        <p>Lenape (capacity 16) has <strong>running water</strong>, canvas tents on raised platforms with cots, picnic tables, fire cans, a flag pole, and latrine. Since we're sharing, our SPL will meet with Troop 265's SPL on Sunday to set ground rules.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Sunday Arrival</h3></div>
+      <div class="card-body">
+        <p><strong>Arrive together between 1:00–3:00 PM.</strong> Do not arrive before 1 PM. Park in the Shale Parking Lot. Once scouts connect with troop leadership, drivers are encouraged to head home. <strong>Camp is not open to visitors during the week</strong> except in an emergency.</p>
+        <ul>
+          <li>Have everyone in Class A or troop shirts for the optional troop photo on arrival.</li>
+          <li>Scouts → campsite → swim gear → medical rechecks → swim checks → dining hall &amp; range orientation.</li>
+          <li><strong>5:50 PM</strong> — Evening Colors (Class A). <strong>8:30 PM</strong> — Welcome Campfire.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Daily Schedule</h3></div>
+      <div class="card-body">
+        <table>
+          <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+          <tbody>
+            <tr><td>6:30 AM</td><td>Polar Bear Swim (Mon/Wed/Fri)</td></tr>
+            <tr><td>7:50 AM</td><td>Morning Colors</td></tr>
+            <tr><td>8:00 AM</td><td>Breakfast</td></tr>
+            <tr><td>9:00–1:00 PM</td><td>Merit badge sessions (4 slots)</td></tr>
+            <tr><td>2:00 PM</td><td>Patrol Programming Hour</td></tr>
+            <tr><td>3:00–5:00 PM</td><td>Open areas — swim, shoot, climb, COPE, make-ups</td></tr>
+            <tr><td>5:50 PM</td><td>Evening Colors (Class A)</td></tr>
+            <tr><td>6:00 PM</td><td>Dinner</td></tr>
+            <tr><td>7:00 PM</td><td>Evening programs</td></tr>
+            <tr><td>10:00 / 11:00 PM</td><td>Taps / Lights Out</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Bears &amp; Food Policy</h3><span class="tag tag-red">Strict</span></div>
+      <div class="card-body">
+        <p><strong>No food, snacks, beverages, wrappers, or anything that smells like food in or near campsites.</strong> Bears wander through camp regularly. All trash to the dumpsters behind the Dining Hall. Snacks stored in a locked vehicle; brought to the site in small amounts and consumed immediately.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Good to Know</h3></div>
+      <div class="card-body">
+        <ul>
+          <li><strong>Trading post:</strong> Camp gear, snacks, drinks, slushies, ice cream. Accepts cash, cards, and tap-to-pay. Bring spending money in a labeled wallet and lock it up.</li>
+          <li><strong>Showers:</strong> Central shower house is close to our site at Lenape. Bring closed-toe shower shoes.</li>
+          <li><strong>Polar Bear Swim Club:</strong> Mon/Wed/Fri at 6:30 AM. Attend all 3 for the patch.</li>
+          <li><strong>COPE:</strong> Patrol Try-Out at 2 PM daily. Full COPE Adventure 1–3 PM all week, ages 13+.</li>
+          <li><strong>Troop photo:</strong> Taken at the Main Gate on Sunday arrival. Formal 8×10 ($7) and silly 5×7 ($4). Let your leader know if you want to order.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Saturday Return</h3></div>
+      <div class="card-body">
+        <p><strong>Leaders will drive all scouts back to Scout Hall in Trumbauersville on Saturday, July 25.</strong> If you need to make other arrangements for pickup or drop-off, text a leader in advance.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MERIT BADGES ================= -->
+  <div class="section" id="badges">
+    <div class="section-title">Merit Badge Schedule</div>
+    <div class="app-callout">
+      <span style="font-size:20px;">📲</span>
+      <p>Open the <a href="https://christiegera.github.io/GoosePond2026/">Camp Prep app</a> for your personal pre-req checklist by name.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-body" style="padding:12px 14px">
+        <table>
+          <thead><tr><th>Scout</th><th>9 AM</th><th>10 AM</th><th>11 AM</th><th>1 PM</th></tr></thead>
+          <tbody>
+            <tr><td>Peter Clark</td><td>Personal Fitness ★</td><td>Astronomy</td><td>Moviemaking</td><td>Space Exploration</td></tr>
+            <tr><td>Lennon Fraley</td><td>Handicraft Duo</td><td>Camping ★</td><td>Signs Signals &amp; Codes</td><td>Archery</td></tr>
+            <tr><td>Michael Gera</td><td>Handicraft Duo</td><td>Camping ★</td><td>Signs Signals &amp; Codes</td><td>Archery</td></tr>
+            <tr><td>Noah Hahn</td><td>Reptile &amp; Amphibian</td><td>Chess</td><td>Enviro. Science</td><td>Archery</td></tr>
+            <tr><td>Caleb Hilton</td><td>Canoeing</td><td>Camping ★</td><td>Nature</td><td>Wilderness Survival</td></tr>
+            <tr><td>Ben Kelly</td><td>Communication ★</td><td>Whitewater</td><td colspan="2" style="text-align:center">Cooking ★ (double session)</td></tr>
+            <tr><td>Kyle Widmann</td><td>Communication ★</td><td>ATV Course</td><td>Enviro. Science</td><td>Space Exploration</td></tr>
+            <tr><td>Adam Yerger</td><td>Lifesaving ★</td><td>ATV Course</td><td>Small Boat Sailing</td><td>Archery</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:11px; color:var(--mid); margin-top:8px;">★ = Eagle-required merit badge</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ADVANCEMENT ================= -->
+  <div class="section" id="advancement">
+    <div class="section-title">Advancement at Camp<span class="sub">What each scout's schedule means for their next rank</span></div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="lswatch e"></div> Eagle-required badge</div>
+      <div class="legend-item"><div class="lswatch r"></div> Elective badge</div>
+    </div>
+
+    <div class="scout-card">
+      <div class="scout-header"><div class="scout-name">Peter Clark</div><div class="scout-rank">2nd Class → 1st Class</div></div>
+      <div class="scout-body">
+        <div class="schedule-row">
+          <div class="slot eagle"><div class="time">9 AM</div><div class="bname">Personal Fitness <span class="etag">Eagle</span></div></div>
+          <div class="slot"><div class="time">10 AM</div><div class="bname">Astronomy</div></div>
+          <div class="slot"><div class="time">11 AM</div><div class="bname">Moviemaking</div></div>
+          <div class="slot"><div class="time">1 PM</div><div class="bname">Space Exploration</div></div>
+        </div>
+        <div class="adv-note">Personal Fitness covers his remaining 1st Class fitness requirements. Peter could be ready for his First Class board of review shortly after camp.</div>
+      </div>
+    </div>
+
+    <div class="scout-card">
+      <div class="scout-header"><div class="scout-name">Lennon Fraley</div><div class="scout-rank">Tenderfoot → 2nd Class</div></div>
+      <div class="scout-body">
+        <div class="schedule-row">
+          <div class="slot"><div class="time">9 AM</div><div class="bname">Handicraft Duo</div></div>
+          <div class="slot eagle"><div class="time">10 AM</div><div class="bname">Camping <span class="etag">Eagle</span></div></div>
+          <div class="slot"><div class="time">11 AM</div><div class="bname">Signs Signals &amp; Codes</div></div>
+          <div class="slot"><div class="time">1 PM</div><div class="bname">Archery</div></div>
+        </div>
+        <div class="adv-note">Camping MB adds nights toward the 20-night requirement. Camp cooking during the week can cover his remaining 2nd Class meal requirement.</div>
+      </div>
+    </div>
+
+    <div class="scout-card">
+      <div class="scout-header"><div class="scout-name">Michael Gera</div><div class="scout-rank">2nd Class → 1st Class</div></div>
+      <div class="scout-body">
+        <div class="schedule-row">
+          <div class="slot"><div class="time">9 AM</div><div class="bname">Handicraft Duo</div></div>
+          <div class="slot eagle"><div class="time">10 AM</div><div class="bname">Camping <span class="etag">Eagle</span></div></div>
+          <div class="slot"><div class="time">11 AM</div><div class="bname">Signs Signals &amp; Codes</div></div>
+          <div class="slot"><div class="time">1 PM</div><div class="bname">Archery</div></div>
+        </div>
+        <div class="adv-note">Camp's scoutcraft area teaches lashings and may offer orienteering — two key 1st Class requirements. Patrol cooking covers additional 1st Class cooking items.</div>
+      </div>
+    </div>
+
+    <div class="scout-card">
+      <div class="scout-header"><div class="scout-name">Noah Hahn</div><div class="scout-rank">1st Class → Star</div></div>
+      <div class="scout-body">
+        <div class="schedule-row">
+          <div class="slot"><div class="time">9 AM</div><div class="bname">Reptile &amp; Amphibian Study</div></div>
+          <div class="slot"><div class="time">10 AM</div><div class="bname">Chess</div></div>
+          <div class="slot"><div class="time">11 AM</div><div class="bname">Environmental Science</div></div>
+          <div class="slot"><div class="time">1 PM</div><div class="bname">Archery</div></div>
+        </div>
+        <div class="adv-note">Four badges this week — all electives for Star rank. After camp, Noah still needs Eagle-required badges (he needs 4 of them for Star) plus a leadership position, service hours, and sign-offs. Strong week for building his merit badge count.</div>
+      </div>
+    </div>
+
+    <div class="scout-card">
+      <div class="scout-header"><div class="scout-name">Caleb Hilton</div><div class="scout-rank">2nd Class → 1st Class</div></div>
+      <div class="scout-body">
+        <div class="schedule-row">
+          <div class="slot"><div class="time">9 AM</div><div class="bname">Canoeing</div></div>
+          <div class="slot eagle"><div class="time">10 AM</div><div class="bname">Camping <span class="etag">Eagle</span></div></div>
+          <div class="slot"><div class="time">11 AM</div><div class="bname">Nature</div></div>
+          <div class="slot"><div class="time">1 PM</div><div class="bname">Wilderness Survival</div></div>
+        </div>
+        <div class="adv-note">Four strong badges in one week. The scoutcraft area may offer orienteering sessions for a key 1st Class requirement.</div>
+      </div>
+    </div>
+
+    <div class="scout-card">
+      <div class="scout-header"><div class="scout-name">Ben Kelly</div><div class="scout-rank">Star → Life</div></div>
+      <div class="scout-body">
+        <div class="schedule-row">
+          <div class="slot eagle"><div class="time">9 AM</div><div class="bname">Communication <span class="etag">Eagle</span></div></div>
+          <div class="slot"><div class="time">10 AM</div><div class="bname">Whitewater</div></div>
+          <div class="slot eagle double"><div class="time">11 AM – 1 PM</div><div class="bname">Cooking <span class="etag">Eagle</span> (double session)</div></div>
+        </div>
+        <div class="adv-note">Communication will be Ben's 4th of 5 additional merit badges for Life. With Whitewater as his 5th, he could complete all Life merit badge requirements at camp. After camp, he needs a service project.</div>
+      </div>
+    </div>
+
+    <div class="scout-card">
+      <div class="scout-header"><div class="scout-name">Kyle Widmann</div><div class="scout-rank">2nd Class → 1st Class</div></div>
+      <div class="scout-body">
+        <div class="schedule-row">
+          <div class="slot eagle"><div class="time">9 AM</div><div class="bname">Communication <span class="etag">Eagle</span></div></div>
+          <div class="slot"><div class="time">10 AM</div><div class="bname">ATV Rider Course</div></div>
+          <div class="slot"><div class="time">11 AM</div><div class="bname">Environmental Science</div></div>
+          <div class="slot"><div class="time">1 PM</div><div class="bname">Space Exploration</div></div>
+        </div>
+        <div class="adv-note">Communication is Kyle's Eagle-required badge this week. Environmental Science is a strong elective that also covers a 1st Class requirement for studying an environmental issue.</div>
+      </div>
+    </div>
+
+    <div class="scout-card">
+      <div class="scout-header"><div class="scout-name">Adam Yerger</div><div class="scout-rank">Life → Eagle</div></div>
+      <div class="scout-body">
+        <div class="schedule-row">
+          <div class="slot eagle"><div class="time">9 AM</div><div class="bname">Lifesaving <span class="etag">Eagle</span></div></div>
+          <div class="slot"><div class="time">10 AM</div><div class="bname">ATV Rider Course</div></div>
+          <div class="slot"><div class="time">11 AM</div><div class="bname">Small Boat Sailing</div></div>
+          <div class="slot"><div class="time">1 PM</div><div class="bname">Archery</div></div>
+        </div>
+        <div class="adv-note">Lifesaving adds another Eagle-required badge. After camp, Adam needs to complete Citizenship in Society and his Eagle project to earn Eagle.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= LEADERS ================= -->
+  <hr class="divider">
+  <div class="section" id="leaders">
+    <div class="section-title">For Leaders</div>
+
+    <div class="card">
+      <div class="card-head"><h3>Forms &amp; Orders Due Before Camp</h3></div>
+      <div class="card-body">
+        <p>Email to <strong>goosepond@nepabsa.org</strong> at least 2 weeks before arrival:</p>
+        <ul>
+          <li><strong><a href="https://gpsr.nepabsa.org/files/Dietary%20Needs%20Form.pdf">Dietary Needs Forms</a></strong> (only if applicable)</li>
+        </ul>
+        <p><strong>T-Shirt orders:</strong> $15 each, Cobalt Blue or Cardinal Red, S–3XL. Submit as a troop with payment to Northeastern PA Council, 72 Montage Mountain Road, Moosic, PA 18507 (Acct# 907283). Use the <a href="https://gpsr.nepabsa.org/files/Shirt%20Pre-Order%20Form.pdf">T-Shirt Order Form</a>. ASAP — sizes not guaranteed for late orders.</p>
+        <p><strong>Troop photo orders:</strong> Collect from families before camp. Formal 8×10 ($7), Silly 5×7 with formal ($4). The <a href="https://gpsr.nepabsa.org/files/Photo%20Order%20Form.pdf">Photo Order Form</a> must be brought to camp (don't mail it ahead) — payment in full is due Sunday at the Camp Office. Photos delivered at Friday campfire.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Food &amp; Fare Specials</h3></div>
+      <div class="card-body">
+        <p><a href="https://gpsr.nepabsa.org/files/Food%20and%20Fare%20Specials%20Form.pdf">Form</a> due at check-in Sunday:</p>
+        <ul>
+          <li><strong>Ice cream social:</strong> $3/sundae (Brownie Bomb or Strawberry Shortcake). Any evening — Wed or Thu recommended. Allergen-free options available.</li>
+          <li><strong>Firewood:</strong> ¼ truckload $30, ½ truckload $60, delivered to site.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Sunday Check-In (Leader)</h3></div>
+      <div class="card-body">
+        <ul>
+          <li>Park in Shale Parking Lot. Wait for Staff Host.</li>
+          <li>Consolidate gear into one truck/trailer. One vehicle at a time to the campsite.</li>
+          <li>Have medical forms collected. Remove plastic sleeves. Keep a leader's copy for travel.</li>
+          <li>Bring a <strong>lock box</strong> for medication transport.</li>
+          <li>Register at Camp Office with: final roster, photo orders &amp; payment, Food &amp; Fare form, ATV waivers/certs/fees, remaining camp fees, any last-minute badge changes.</li>
+          <li><strong>4:45 PM:</strong> Leader Orientation at Croom Pavilion (Scoutmaster + SPL, required).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Saturday Departure (Leader)</h3></div>
+      <div class="card-body">
+        <ul>
+          <li>Continental breakfast 8:00 AM. Program staff at Croom Pavilion at 8:30 AM for advancement questions — <strong>resolve issues before you leave.</strong></li>
+          <li>Pack up and clean your site — your staff host will come by to check it.</li>
+          <li>Stop at Camp Office <strong>after breakfast</strong>: settle fees, turn in leader &amp; SPL evaluations, pick up medical forms &amp; meds, <strong>confirm 2027 reservation</strong>.</li>
+          <li>Depart by 10:00 AM.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= LEADER CHECKLIST ================= -->
+  <div class="section" id="checklist">
+    <div class="section-title">Leader Checklist</div>
+
+    <div class="card">
+      <div class="card-head"><h3>Before Camp</h3></div>
+      <div class="card-body">
+        <ul class="checklist">
+          <li>Verify ALL medical forms (A, B1, B2, C) — signatures, insurance, tetanus dates.</li>
+          <li>Bring 3 copies of the troop's completed <a href="https://gpsr.nepabsa.org/files/Swim%20Classification%20Procedures.pdf">Swim Classification Record(s)</a>, with the administering lifeguard's certification attached to each — one for aquatics, one for the office, one for the troop. All 9 scouts are already classified Swimmer from unit-level testing in April.</li>
+          <li>Collect medications in original bottles, bagged and labeled. Bring lock box.</li>
+          <li>Make a leader's copy of medical forms for travel.</li>
+          <li>Collect <a href="https://gpsr.nepabsa.org/files/ATV%20Rider.pdf">ATV waivers</a> (both forms), online certificates, and $35 fees from Kyle &amp; Adam.</li>
+          <li>Email <a href="https://gpsr.nepabsa.org/files/Dietary%20Needs%20Form.pdf">Dietary Needs forms</a> (if any) to goosepond@nepabsa.org.</li>
+          <li>Submit <a href="https://gpsr.nepabsa.org/files/Shirt%20Pre-Order%20Form.pdf">T-shirt orders</a> with payment to Council Service Center.</li>
+          <li>Collect troop photo orders &amp; payment (formal $7, silly $4) using the <a href="https://gpsr.nepabsa.org/files/Photo%20Order%20Form.pdf">Photo Order Form</a> — bring form to camp, do not mail.</li>
+          <li>Complete <a href="https://gpsr.nepabsa.org/files/Food%20and%20Fare%20Specials%20Form.pdf">Food &amp; Fare form</a> (ice cream, firewood) — due at check-in Sunday.</li>
+          <li>Confirm merit badge selections in online registry. Point scouts to the <a href="https://christiegera.github.io/GoosePond2026/">camp prep app</a> for pre-reqs.</li>
+          <li>Issue blue cards for each badge.</li>
+          <li>Pack American flag, Troop 13 flag, patrol flags.</li>
+          <li>Pack orange water cooler.</li>
+          <li>Coordinate arrival — all scouts together, 1–3 PM Sunday.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>At Camp</h3></div>
+      <div class="card-body">
+        <ul class="checklist">
+          <li>Set ground rules with Troop 265 (shared site) on arrival.</li>
+          <li>Attend Sunday 4:45 PM leader orientation (required).</li>
+          <li>Talk to COPE staff Sunday evening about sign-ups.</li>
+          <li>Talk to scoutcraft staff about rank advancement drop-in sessions.</li>
+          <li>Attend adult leader meetings Mon/Wed/Fri at 12:30 PM.</li>
+          <li>Check on scout advancement progress throughout the week.</li>
+          <li>Review all blue cards and advancement materials Friday evening.</li>
+          <li>Resolve questions with Program Staff Saturday 8:30 AM at Croom Pavilion.</li>
+          <li>Pick up medical forms &amp; meds at Camp Office Saturday.</li>
+          <li>Complete leader and SPL evaluation forms.</li>
+          <li>Confirm 2027 camp reservation before departure.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
