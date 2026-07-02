@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Goose Pond 2026 — Pre-Camp Guide</title>
+<title>Goose Pond 2026 — Camp Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -20,10 +20,11 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .hero { background: var(--forest); padding: 36px 24px 30px; text-align: center; position: relative; overflow: hidden; }
 .hero::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,0.02) 20px,rgba(255,255,255,0.02) 40px); }
 .hero-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.hero-badge { width: 56px; height: 56px; border-radius: 50%; background: var(--tan); color: var(--forest); display: flex; align-items: center; justify-content: center; font-size: 30px; flex-shrink: 0; }
-.hero-camp-name { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 3px; color: var(--tan); text-transform: uppercase; margin-bottom: 2px; }
-.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: 38px; line-height: 1; color: white; }
+.hero-badge { width: 64px; height: 64px; border-radius: 50%; background: var(--tan); color: var(--forest); display: flex; align-items: center; justify-content: center; font-size: 34px; flex-shrink: 0; }
+.hero-troop { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 3px; color: var(--tan); text-transform: uppercase; margin-bottom: 4px; }
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: 54px; line-height: 1; color: white; }
 .hero-title span { color: var(--tan); }
+.hero-subtitle { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: rgba(255,255,255,0.7); margin-top: 2px; }
 .hero-meta { margin-top: 16px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,0.7); }
 
 /* NAV */
@@ -51,6 +52,14 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .card-body li { margin-bottom: 6px; }
 .card-body li::marker { color: var(--tan); }
 a { color: var(--olive); }
+
+/* PACKING LIST */
+.pack-section { margin-bottom: 16px; }
+.pack-heading { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.5px; color: var(--olive); border-bottom: 1px solid var(--tan-lt); padding-bottom: 4px; margin-bottom: 8px; }
+.pack-list { list-style: none; margin: 0; padding: 0; }
+.pack-list li { font-size: 13.5px; padding: 4px 0 4px 16px; border-bottom: 1px solid var(--tan-lt); position: relative; }
+.pack-list li:last-child { border-bottom: none; }
+.pack-list li::before { content: '—'; position: absolute; left: 0; color: var(--tan); }
 
 /* TABLES */
 table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; }
@@ -90,7 +99,6 @@ tbody tr:nth-child(even) { background: var(--cream); }
 }
 
 .divider { border: none; border-top: 3px solid var(--tan); max-width: 220px; margin: 44px auto 0; }
-.divider-thin { height: 8px; }
 
 .app-callout { display: flex; align-items: center; gap: 10px; background: var(--olive); border-radius: var(--radius); padding: 12px 16px; margin: 14px 0; }
 .app-callout a { color: var(--tan); font-weight: 700; text-decoration: underline; }
@@ -101,7 +109,7 @@ tbody tr:nth-child(even) { background: var(--cream); }
   .card, .scout-card { break-inside: avoid; }
 }
 @media (max-width: 600px) {
-  .hero-title { font-size: 28px; }
+  .hero-title { font-size: 40px; }
   .slot { min-width: 85px; }
   .card-head { flex-direction: column; }
 }
@@ -113,8 +121,9 @@ tbody tr:nth-child(even) { background: var(--cream); }
   <div class="hero-inner">
     <div class="hero-badge">🏕️</div>
     <div>
-      <div class="hero-camp-name">Goose Pond · 2026</div>
-      <div class="hero-title">Troop 13 <span>Pre-Camp Guide</span></div>
+      <div class="hero-troop">Troop 13</div>
+      <div class="hero-title">Goose Pond <span>2026</span></div>
+      <div class="hero-subtitle">Camp Guide</div>
     </div>
   </div>
   <div class="hero-meta">
@@ -139,7 +148,6 @@ tbody tr:nth-child(even) { background: var(--cream); }
 
   <!-- ================= CONTACT & EMERGENCY ================= -->
   <div class="section" id="contact" style="padding-top: 28px;">
-
     <div class="card" style="border-color: var(--rust); border-width: 2px;">
       <div class="card-head" style="background: var(--rust);">
         <h3 style="color: white;">Leader Contact &amp; Emergency Info</h3>
@@ -149,16 +157,15 @@ tbody tr:nth-child(even) { background: var(--cream); }
         <table>
           <thead><tr><th>Leader</th><th>Cell</th></tr></thead>
           <tbody>
-            <tr><td><strong>Chad Clark</strong></td><td><a href="tel:4842392526">(484) 239-2526</a></td></tr>
-            <tr><td><strong>Christie Gera</strong></td><td><a href="tel:2673775907">(267) 377-5907</a></td></tr>
+            <tr><td>Chad Clark</td><td><a href="tel:4842392526">(484) 239-2526</a></td></tr>
+            <tr><td>Christie Gera</td><td><a href="tel:2673775907">(267) 377-5907</a></td></tr>
           </tbody>
         </table>
-        <p style="margin-top:12px;"><strong>Camp Office:</strong> <a href="tel:5706892561">(570) 689-2561</a> — Goose Pond Scout Reservation, 1047 Goose Pond Road, Lake Ariel, PA 18436</p>
-        <p style="margin-top:10px; padding-top:10px; border-top:1px solid var(--tan-lt);"><strong>Cell coverage at camp is average and varies by carrier.</strong> If you can't reach us, try the camp office. A parent group text will be set up before camp for troop updates — details coming soon.</p>
-        <p style="margin-top:10px; padding-top:10px; border-top:1px solid var(--tan-lt);"><strong>If your scout is sick or injured:</strong> Camp's Health Lodge is on-site. Once any situation is handled, we will contact you immediately — whether it requires a parent visit or not. In a true emergency, camp staff and leaders will reach out right away.</p>
+        <p style="margin-top:12px;"><strong>Camp Office:</strong> <a href="tel:5706892561">(570) 689-2561</a> &mdash; Goose Pond Scout Reservation, 1047 Goose Pond Road, Lake Ariel, PA 18436</p>
+        <p style="margin-top:10px; padding-top:10px; border-top:1px solid var(--tan-lt);">Cell coverage at camp is average and varies by carrier. If you can't reach us, try the camp office. A parent group email will be set up before camp for troop updates — details coming soon.</p>
+        <p style="margin-top:10px; padding-top:10px; border-top:1px solid var(--tan-lt);"><strong>If your scout is sick or injured:</strong> Camp's Health Lodge is on-site and staffed all week. Once any situation is handled, we will contact you immediately — whether it requires a parent visit or not.</p>
       </div>
     </div>
-
   </div>
 
   <!-- ================= SCOUTS & FAMILIES ================= -->
@@ -168,12 +175,12 @@ tbody tr:nth-child(even) { background: var(--cream); }
     <div class="card">
       <div class="card-head"><h3>Medical Forms</h3><span class="tag tag-red">Required</span></div>
       <div class="card-body">
-        <p><strong>Every scout needs a current <a href="https://filestore.scouting.org/filestore/healthsafety/pdf/680-001_abc.pdf">BSA Annual Health &amp; Medical Record</a> (Parts A, B1, B2, and C).</strong> Scouts without a properly completed form will be sent home after 24 hours.</p>
+        <p><strong>Every scout needs a current <a href="https://filestore.scouting.org/filestore/healthsafety/pdf/680-001_abc.pdf">BSA Annual Health &amp; Medical Record</a> (Parts A, B1, B2, and C). Scouts without a properly completed form will not be allowed to attend.</strong></p>
+        <p>We need three copies of each form: one for camp staff, one for Troop 13 leaders, and one to keep on file for the 2026–27 scout year.</p>
         <ul>
           <li>Parent/guardian AND youth signatures on Part A.</li>
-          <li>Medical evaluation by a physician within 12 months of camp.</li>
-          <li>Insurance info on Part B or insurance card copy (front &amp; back) attached.</li>
-          <li>Tetanus shot within 10 years of July 2026.</li>
+          <li>Insurance card copy (front &amp; back) attached.</li>
+          <li>Immunization records included.</li>
           <li>Restrictions clearly marked.</li>
         </ul>
       </div>
@@ -183,10 +190,9 @@ tbody tr:nth-child(even) { background: var(--cream); }
       <div class="card-head"><h3>Medications</h3></div>
       <div class="card-body">
         <ul>
-          <li>All meds in <strong>original bottles</strong>.</li>
-          <li>Each scout's meds in a clear plastic bag labeled: <strong>name, when to take, how much</strong>.</li>
-          <li>Collected at Sunday check-in, distributed by Health Officer all week.</li>
-          <li>Scouts with <strong>epi-pens or inhalers</strong> carry them in their day bag and must know how to use them.</li>
+          <li>All medications in original bottles, bagged and labeled with the scout's name, dosage, and schedule.</li>
+          <li>Collected at Sunday check-in and distributed by camp medical staff throughout the week.</li>
+          <li>Epi-pens and inhalers only: scouts carry these in their day bag and must know how to use them.</li>
         </ul>
       </div>
     </div>
@@ -200,17 +206,22 @@ tbody tr:nth-child(even) { background: var(--cream); }
           <p>Use the <a href="https://christiegera.github.io/GoosePond2026/">Camp Prep app</a> to check off your personal pre-reqs as you go — tap your name to see your list.</p>
         </div>
         <p style="margin-top:14px; padding-top:12px; border-top:1px solid var(--tan-lt);"><strong>ATV Riders: Kyle &amp; Adam</strong></p>
+        <p>The <a href="https://gpsr.nepabsa.org/files/ATV%20Rider.pdf">ATV packet</a> contains two forms that must be completed and signed by both the scout and a parent/guardian before Sunday:</p>
         <ul>
-          <li>Completed participation &amp; hold-harmless waiver AND ASI General Release (both signed by scout AND parent).</li>
-          <li>Online pre-course at <strong><a href="https://cbt.svia.org/login/index.php">cbt.svia.org</a></strong> — print the completion certificate. Takes 1–2 hours.</li>
-          <li>Long sleeve shirt, long pants, over-the-ankle shoes/boots.</li>
-          <li>$35 fee at check-in.</li>
+          <li>ASI ATV Safety Course General Release &amp; Indemnification Agreement</li>
+          <li>Scouting America Participation &amp; Hold-Harmless Agreement</li>
+        </ul>
+        <ul>
+          <li>Complete the online pre-course at <a href="https://cbt.svia.org/login/index.php">cbt.svia.org</a> and print the completion certificate. Takes 1–2 hours. No registration or payment required — do not pay for the "State Certificate."</li>
+          <li>Long sleeve shirt, long pants, over-the-ankle shoes or boots.</li>
+          <li>$35 fee due at check-in. Make checks payable to Northeastern PA Council, BSA.</li>
+          <li>Note: if a scout is signed up but hasn't completed the pre-reqs, the fee is still owed if the slot can't be filled.</li>
         </ul>
         <p style="margin-top:14px; padding-top:12px; border-top:1px solid var(--tan-lt);"><strong>Finishing a Partial Badge</strong></p>
         <ul>
-          <li>If a scout is finishing a badge they started but didn't complete previously (a "partial"), bring the blue card to camp.</li>
-          <li>Present it to the Program Area Director for that badge on <strong>Sunday or Monday</strong> — they'll work out with the scout what's left to do and when.</li>
-          <li>Previously completed work may or may not be accepted as-is — the counselor can ask the scout to demonstrate the knowledge or skill again, even with a signed partial card.</li>
+          <li>If a scout is finishing a badge they started but didn't complete previously, bring the blue card to camp.</li>
+          <li>Present it to the Program Area Director for that badge on Sunday or Monday — they'll work out with the scout what's left to do and when.</li>
+          <li>Previously completed work may or may not be accepted as-is. The counselor can ask the scout to demonstrate knowledge or skills again, even with a signed partial card.</li>
           <li>Partials are valid until the scout turns 18, as long as they can show they're still current on the material.</li>
         </ul>
       </div>
@@ -224,31 +235,110 @@ tbody tr:nth-child(even) { background: var(--cream); }
     <div class="card">
       <div class="card-head"><h3>Personal Gear</h3></div>
       <div class="card-body">
-        <table>
-          <thead><tr><th>Category</th><th>Items</th></tr></thead>
-          <tbody>
-            <tr><td>Uniforms</td><td>Class A (official shirt, belt, shorts/pants, socks) for evening retreat &amp; dinner only. Scout T-shirt(s) and regular shirts/shorts for daytime.</td></tr>
-            <tr><td>Clothing</td><td>Underwear &amp; socks for 6+ days. Jacket/sweatshirt. Hat/cap. Rain gear. Swimwear.</td></tr>
-            <tr><td>Footwear</td><td>Hiking boots. Athletic shoes. Old shoes for boating. Water shoes. <strong>Closed-toe shower shoes.</strong></td></tr>
-            <tr><td>Sleep</td><td>Sleeping bag or blankets. Pillow. (Cots and tents provided.)</td></tr>
-            <tr><td>Hygiene</td><td>Towels, soap, shampoo, toothbrush. <strong>Sunscreen. Bug spray (non-aerosol).</strong></td></tr>
-            <tr><td>Essentials</td><td><strong>Water bottle.</strong> Flashlight + batteries. Watch. Pocketknife. Personal first aid kit. Daypack.</td></tr>
-            <tr><td>Scouting</td><td>Scout Handbook. Merit badge books for your badges. Pre-req materials. <strong>Blue merit badge cards</strong> (issued by leader). Notebook, pencil.</td></tr>
-            <tr><td>Optional</td><td>Fishing gear. Camera. Camp chair. Spending money in a labeled wallet (lock it up).</td></tr>
-          </tbody>
-        </table>
+
+        <div class="pack-section">
+          <div class="pack-heading">Uniforms</div>
+          <ul class="pack-list">
+            <li>Class A shirt, belt, shorts or pants, and socks — for evening colors and dinner</li>
+            <li>Scout T-shirt(s) for daytime activities</li>
+            <li>Regular shirts and shorts for the rest of the day</li>
+          </ul>
+        </div>
+
+        <div class="pack-section">
+          <div class="pack-heading">Clothing</div>
+          <ul class="pack-list">
+            <li>Underwear and socks for 6+ days</li>
+            <li>Jacket or sweatshirt</li>
+            <li>Hat or cap</li>
+            <li>Rain gear</li>
+            <li>Swimwear</li>
+          </ul>
+        </div>
+
+        <div class="pack-section">
+          <div class="pack-heading">Footwear</div>
+          <ul class="pack-list">
+            <li>Hiking boots</li>
+            <li>Athletic shoes</li>
+            <li>Old shoes for boating</li>
+            <li>Water shoes</li>
+            <li>Closed-toe shower shoes</li>
+          </ul>
+        </div>
+
+        <div class="pack-section">
+          <div class="pack-heading">Sleeping</div>
+          <ul class="pack-list">
+            <li>Sleeping bag or blankets</li>
+            <li>Pillow</li>
+            <li>Cots and tents are provided at the site</li>
+          </ul>
+        </div>
+
+        <div class="pack-section">
+          <div class="pack-heading">Hygiene</div>
+          <ul class="pack-list">
+            <li>Towels</li>
+            <li>Soap and shampoo</li>
+            <li>Toothbrush and toothpaste</li>
+            <li>Sunscreen</li>
+            <li>Bug spray — non-aerosol only</li>
+          </ul>
+        </div>
+
+        <div class="pack-section">
+          <div class="pack-heading">Essentials</div>
+          <ul class="pack-list">
+            <li>Water bottle</li>
+            <li>Flashlight and extra batteries</li>
+            <li>Watch</li>
+            <li>Pocketknife</li>
+            <li>Personal first aid kit</li>
+            <li>Daypack</li>
+          </ul>
+        </div>
+
+        <div class="pack-section">
+          <div class="pack-heading">Scouting</div>
+          <ul class="pack-list">
+            <li>Scout Handbook</li>
+            <li>Merit badge books for your registered badges</li>
+            <li>Pre-req materials and any completed written work</li>
+            <li>Blue merit badge cards — issued by your leader before camp</li>
+            <li>Notebook and pencil</li>
+          </ul>
+        </div>
+
+        <div class="pack-section">
+          <div class="pack-heading">Optional</div>
+          <ul class="pack-list">
+            <li>Fishing gear</li>
+            <li>Camera</li>
+            <li>Camp chair</li>
+            <li>Spending money in a labeled wallet — lock it up at the site</li>
+          </ul>
+        </div>
+
       </div>
     </div>
 
     <div class="card">
       <div class="card-head"><h3>Troop Gear</h3></div>
       <div class="card-body">
-        <ul>
-          <li><strong>American flag and Troop 13 flag</strong> — post at your site for daily ceremonies.</li>
-          <li>Patrol flags. Orange water cooler. Bow saws, extra rope.</li>
-          <li>Antibacterial soap &amp; hand sanitizer (pump bottles). Troop first aid kit.</li>
-          <li>Merit badge pamphlets &amp; blue cards. Lanterns.</li>
-          <li>Retired flags if doing a flag retirement ceremony.</li>
+        <ul class="pack-list" style="margin-left:0;">
+          <li>American flag</li>
+          <li>Troop 13 flag</li>
+          <li>Patrol flags</li>
+          <li>Orange water cooler</li>
+          <li>Bow saws</li>
+          <li>Extra rope</li>
+          <li>Antibacterial soap, pump bottles</li>
+          <li>Hand sanitizer, pump bottles</li>
+          <li>Troop first aid kit</li>
+          <li>Merit badge pamphlets</li>
+          <li>Blue cards</li>
+          <li>Lanterns</li>
         </ul>
       </div>
     </div>
@@ -256,7 +346,7 @@ tbody tr:nth-child(even) { background: var(--cream); }
     <div class="card">
       <div class="card-head"><h3>Do NOT Bring</h3><span class="tag tag-red">Prohibited</span></div>
       <div class="card-body">
-        <p>Fireworks. Firearms/ammo. Sheath knives. Alcohol. Drugs. Tobacco/vape. Aerosol cans. Glass containers. Candles/open flames. Pets. Gasoline/kerosene. Personal bikes (unless Cycling MB). <strong>No food in campsites</strong> (bears).</p>
+        <p>Fireworks. Firearms and ammo. Sheath knives. Alcohol. Drugs. Tobacco and vape. Aerosol cans. Glass containers. Candles and open flames. Pets. Gasoline and kerosene. Personal bikes (unless Cycling MB). <strong>No food in campsites</strong> — bears are active in the area.</p>
       </div>
     </div>
   </div>
@@ -268,18 +358,29 @@ tbody tr:nth-child(even) { background: var(--cream); }
     <div class="card">
       <div class="card-head"><h3>Our Site: Lenape</h3><span class="tag">Shared w/ Troop 265</span></div>
       <div class="card-body">
-        <p>Lenape (capacity 16) has <strong>running water</strong>, canvas tents on raised platforms with cots, picnic tables, fire cans, a flag pole, and latrine. Since we're sharing, our SPL will meet with Troop 265's SPL on Sunday to set ground rules.</p>
+        <p>Lenape is a smaller site centrally located in camp, just off Applegate Lane across from the Helcoski/Handicraft Lodge — within easy walking distance of just about everything. Since we're sharing, our SPL will meet with Troop 265's SPL on Sunday to set ground rules.</p>
+        <ul>
+          <li>8 two-man canvas tent platforms, each with 2 metal-framed cots and mattresses</li>
+          <li>Program tarp and dining fly</li>
+          <li>1 picnic table</li>
+          <li>Wooded center area with good shade coverage</li>
+          <li>On-site latrine and washstand with flush toilets</li>
+        </ul>
+        <p><a href="http://gpsr.nepabsa.org/img/campviews/lenapeview/lenape.html">Take a 360° virtual tour of Lenape</a></p>
       </div>
     </div>
 
     <div class="card">
       <div class="card-head"><h3>Sunday Arrival</h3></div>
       <div class="card-body">
-        <p><strong>Arrive together between 1:00–3:00 PM.</strong> Do not arrive before 1 PM. Park in the Shale Parking Lot. Once scouts connect with troop leadership, drivers are encouraged to head home. <strong>Camp is not open to visitors during the week</strong> except in an emergency.</p>
+        <p>We are carpooling to camp. <strong>Meet at Scout Hall in Trumbauersville at 11:00 AM</strong> so we can drive up together and arrive as a troop. Do not go to camp independently.</p>
         <ul>
-          <li>Have everyone in Class A or troop shirts for the optional troop photo on arrival.</li>
-          <li>Scouts → campsite → swim gear → medical rechecks → swim checks → dining hall &amp; range orientation.</li>
-          <li><strong>5:50 PM</strong> — Evening Colors (Class A). <strong>8:30 PM</strong> — Welcome Campfire.</li>
+          <li>Wear Class A or troop shirts for arrival — check with Chad for the call on that.</li>
+          <li>Park at Goose Pond in the Shale Parking Lot and wait for the Staff Host.</li>
+          <li>Consolidate gear into one truck or trailer — one vehicle at a time to the campsite.</li>
+          <li>Scouts check in at campsite, then swim gear, medical rechecks, swim checks, dining hall and range orientation.</li>
+          <li>5:50 PM — Evening Colors (Class A). 8:30 PM — Welcome Campfire.</li>
+          <li>Camp is not open to visitors during the week except in an emergency.</li>
         </ul>
       </div>
     </div>
@@ -308,7 +409,7 @@ tbody tr:nth-child(even) { background: var(--cream); }
     <div class="card">
       <div class="card-head"><h3>Bears &amp; Food Policy</h3><span class="tag tag-red">Strict</span></div>
       <div class="card-body">
-        <p><strong>No food, snacks, beverages, wrappers, or anything that smells like food in or near campsites.</strong> Bears wander through camp regularly. All trash to the dumpsters behind the Dining Hall. Snacks stored in a locked vehicle; brought to the site in small amounts and consumed immediately.</p>
+        <p><strong>No food, snacks, beverages, wrappers, or anything that smells like food in or near campsites.</strong> Bears wander through camp regularly. All trash goes to the dumpsters behind the Dining Hall. Snacks stored in a locked vehicle and consumed immediately when brought to the site.</p>
       </div>
     </div>
 
@@ -316,11 +417,11 @@ tbody tr:nth-child(even) { background: var(--cream); }
       <div class="card-head"><h3>Good to Know</h3></div>
       <div class="card-body">
         <ul>
-          <li><strong>Trading post:</strong> Camp gear, snacks, drinks, slushies, ice cream. Accepts cash, cards, and tap-to-pay. Bring spending money in a labeled wallet and lock it up.</li>
-          <li><strong>Showers:</strong> Central shower house is close to our site at Lenape. Bring closed-toe shower shoes.</li>
-          <li><strong>Polar Bear Swim Club:</strong> Mon/Wed/Fri at 6:30 AM. Attend all 3 for the patch.</li>
-          <li><strong>COPE:</strong> Patrol Try-Out at 2 PM daily. Full COPE Adventure 1–3 PM all week, ages 13+.</li>
-          <li><strong>Troop photo:</strong> Taken at the Main Gate on Sunday arrival. Formal 8×10 ($7) and silly 5×7 ($4). Let your leader know if you want to order.</li>
+          <li>Trading post: camp gear, snacks, drinks, slushies, ice cream. Accepts cash, cards, and tap-to-pay.</li>
+          <li>Showers: the shower house is close to our site. Bring closed-toe shower shoes.</li>
+          <li>Polar Bear Swim Club: Mon/Wed/Fri at 6:30 AM. Attend all 3 for the patch.</li>
+          <li>COPE: Patrol Try-Out at 2 PM daily. Full COPE Adventure 1–3 PM all week, ages 13+.</li>
+          <li>Troop photo: taken at the Main Gate on Sunday arrival. Formal 8×10 ($7) and silly 5×7 ($4). Let your leader know if you want to order.</li>
         </ul>
       </div>
     </div>
@@ -328,7 +429,7 @@ tbody tr:nth-child(even) { background: var(--cream); }
     <div class="card">
       <div class="card-head"><h3>Saturday Return</h3></div>
       <div class="card-body">
-        <p><strong>Leaders will drive all scouts back to Scout Hall in Trumbauersville on Saturday, July 25.</strong> If you need to make other arrangements for pickup or drop-off, text a leader in advance.</p>
+        <p>Leaders will drive all scouts back to Scout Hall in Trumbauersville on Saturday, July 25. If you need to make other arrangements for pickup or drop-off, text a leader in advance.</p>
       </div>
     </div>
   </div>
@@ -418,7 +519,7 @@ tbody tr:nth-child(even) { background: var(--cream); }
           <div class="slot"><div class="time">11 AM</div><div class="bname">Environmental Science</div></div>
           <div class="slot"><div class="time">1 PM</div><div class="bname">Archery</div></div>
         </div>
-        <div class="adv-note">Four badges this week — all electives for Star rank. After camp, Noah still needs Eagle-required badges (he needs 4 of them for Star) plus a leadership position, service hours, and sign-offs. Strong week for building his merit badge count.</div>
+        <div class="adv-note">Four badges this week — all electives for Star rank. After camp, Noah still needs Eagle-required badges (4 required for Star) plus a leadership position, service hours, and sign-offs. Strong week for building his merit badge count.</div>
       </div>
     </div>
 
@@ -484,7 +585,7 @@ tbody tr:nth-child(even) { background: var(--cream); }
       <div class="card-body">
         <p>Email to <strong>goosepond@nepabsa.org</strong> at least 2 weeks before arrival:</p>
         <ul>
-          <li><strong><a href="https://gpsr.nepabsa.org/files/Dietary%20Needs%20Form.pdf">Dietary Needs Forms</a></strong> (only if applicable)</li>
+          <li><a href="https://gpsr.nepabsa.org/files/Dietary%20Needs%20Form.pdf">Dietary Needs Forms</a> (only if applicable)</li>
         </ul>
         <p><strong>T-Shirt orders:</strong> $15 each, Cobalt Blue or Cardinal Red, S–3XL. Submit as a troop with payment to Northeastern PA Council, 72 Montage Mountain Road, Moosic, PA 18507 (Acct# 907283). Use the <a href="https://gpsr.nepabsa.org/files/Shirt%20Pre-Order%20Form.pdf">T-Shirt Order Form</a>. ASAP — sizes not guaranteed for late orders.</p>
         <p><strong>Troop photo orders:</strong> Collect from families before camp. Formal 8×10 ($7), Silly 5×7 with formal ($4). The <a href="https://gpsr.nepabsa.org/files/Photo%20Order%20Form.pdf">Photo Order Form</a> must be brought to camp (don't mail it ahead) — payment in full is due Sunday at the Camp Office. Photos delivered at Friday campfire.</p>
@@ -496,8 +597,8 @@ tbody tr:nth-child(even) { background: var(--cream); }
       <div class="card-body">
         <p><a href="https://gpsr.nepabsa.org/files/Food%20and%20Fare%20Specials%20Form.pdf">Form</a> due at check-in Sunday:</p>
         <ul>
-          <li><strong>Ice cream social:</strong> $3/sundae (Brownie Bomb or Strawberry Shortcake). Any evening — Wed or Thu recommended. Allergen-free options available.</li>
-          <li><strong>Firewood:</strong> ¼ truckload $30, ½ truckload $60, delivered to site.</li>
+          <li>Ice cream social: $3/sundae (Brownie Bomb or Strawberry Shortcake). Any evening — Wed or Thu recommended. Allergen-free options available.</li>
+          <li>Firewood: ¼ truckload $30, ½ truckload $60, delivered to site.</li>
         </ul>
       </div>
     </div>
@@ -507,11 +608,11 @@ tbody tr:nth-child(even) { background: var(--cream); }
       <div class="card-body">
         <ul>
           <li>Park in Shale Parking Lot. Wait for Staff Host.</li>
-          <li>Consolidate gear into one truck/trailer. One vehicle at a time to the campsite.</li>
+          <li>Consolidate gear into one truck or trailer. One vehicle at a time to the campsite.</li>
           <li>Have medical forms collected. Remove plastic sleeves. Keep a leader's copy for travel.</li>
-          <li>Bring a <strong>lock box</strong> for medication transport.</li>
+          <li>Bring a lock box for medication transport.</li>
           <li>Register at Camp Office with: final roster, photo orders &amp; payment, Food &amp; Fare form, ATV waivers/certs/fees, remaining camp fees, any last-minute badge changes.</li>
-          <li><strong>4:45 PM:</strong> Leader Orientation at Croom Pavilion (Scoutmaster + SPL, required).</li>
+          <li>4:45 PM: Leader Orientation at Croom Pavilion (Scoutmaster + SPL, required).</li>
         </ul>
       </div>
     </div>
@@ -520,9 +621,9 @@ tbody tr:nth-child(even) { background: var(--cream); }
       <div class="card-head"><h3>Saturday Departure (Leader)</h3></div>
       <div class="card-body">
         <ul>
-          <li>Continental breakfast 8:00 AM. Program staff at Croom Pavilion at 8:30 AM for advancement questions — <strong>resolve issues before you leave.</strong></li>
+          <li>Continental breakfast 8:00 AM. Program staff at Croom Pavilion at 8:30 AM for advancement questions — resolve issues before you leave.</li>
           <li>Pack up and clean your site — your staff host will come by to check it.</li>
-          <li>Stop at Camp Office <strong>after breakfast</strong>: settle fees, turn in leader &amp; SPL evaluations, pick up medical forms &amp; meds, <strong>confirm 2027 reservation</strong>.</li>
+          <li>Stop at Camp Office after breakfast: settle fees, turn in leader &amp; SPL evaluations, pick up medical forms &amp; meds, confirm 2027 reservation.</li>
           <li>Depart by 10:00 AM.</li>
         </ul>
       </div>
@@ -537,20 +638,20 @@ tbody tr:nth-child(even) { background: var(--cream); }
       <div class="card-head"><h3>Before Camp</h3></div>
       <div class="card-body">
         <ul class="checklist">
-          <li>Verify ALL medical forms (A, B1, B2, C) — signatures, insurance, tetanus dates.</li>
-          <li>Bring 3 copies of the troop's completed <a href="https://gpsr.nepabsa.org/files/Swim%20Classification%20Procedures.pdf">Swim Classification Record(s)</a>, with the administering lifeguard's certification attached to each — one for aquatics, one for the office, one for the troop. All 9 scouts are already classified Swimmer from unit-level testing in April.</li>
+          <li>Verify ALL medical forms (A, B1, B2, C) — signatures, insurance card copy, immunization records, restrictions. Make 3 copies of each.</li>
+          <li>Bring 3 copies of the troop's completed <a href="https://gpsr.nepabsa.org/files/Swim%20Classification%20Procedures.pdf">Swim Classification Record(s)</a>, with the administering lifeguard's certification attached — one for aquatics, one for the office, one for the troop. All 9 scouts are already classified Swimmer from unit-level testing in April.</li>
           <li>Collect medications in original bottles, bagged and labeled. Bring lock box.</li>
           <li>Make a leader's copy of medical forms for travel.</li>
-          <li>Collect <a href="https://gpsr.nepabsa.org/files/ATV%20Rider.pdf">ATV waivers</a> (both forms), online certificates, and $35 fees from Kyle &amp; Adam.</li>
-          <li>Email <a href="https://gpsr.nepabsa.org/files/Dietary%20Needs%20Form.pdf">Dietary Needs forms</a> (if any) to goosepond@nepabsa.org.</li>
+          <li>Collect completed <a href="https://gpsr.nepabsa.org/files/ATV%20Rider.pdf">ATV waivers</a> (both forms, scout and parent signatures), printed online course certificates, and $35 fees from Kyle &amp; Adam.</li>
+          <li>Email <a href="https://gpsr.nepabsa.org/files/Dietary%20Needs%20Form.pdf">Dietary Needs forms</a> (if any) to goosepond@nepabsa.org at least 2 weeks before camp.</li>
           <li>Submit <a href="https://gpsr.nepabsa.org/files/Shirt%20Pre-Order%20Form.pdf">T-shirt orders</a> with payment to Council Service Center.</li>
-          <li>Collect troop photo orders &amp; payment (formal $7, silly $4) using the <a href="https://gpsr.nepabsa.org/files/Photo%20Order%20Form.pdf">Photo Order Form</a> — bring form to camp, do not mail.</li>
+          <li>Collect troop photo orders &amp; payment using the <a href="https://gpsr.nepabsa.org/files/Photo%20Order%20Form.pdf">Photo Order Form</a> — bring form to camp, do not mail.</li>
           <li>Complete <a href="https://gpsr.nepabsa.org/files/Food%20and%20Fare%20Specials%20Form.pdf">Food &amp; Fare form</a> (ice cream, firewood) — due at check-in Sunday.</li>
           <li>Confirm merit badge selections in online registry. Point scouts to the <a href="https://christiegera.github.io/GoosePond2026/">camp prep app</a> for pre-reqs.</li>
           <li>Issue blue cards for each badge.</li>
           <li>Pack American flag, Troop 13 flag, patrol flags.</li>
           <li>Pack orange water cooler.</li>
-          <li>Coordinate arrival — all scouts together, 1–3 PM Sunday.</li>
+          <li>Coordinate carpool — all scouts meet at Scout Hall at 11:00 AM Sunday.</li>
         </ul>
       </div>
     </div>
@@ -576,6 +677,5 @@ tbody tr:nth-child(even) { background: var(--cream); }
   </div>
 
 </div>
-
 </body>
 </html>
