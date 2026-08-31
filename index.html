@@ -77,6 +77,7 @@ transform: scaleX(0); transition: transform 0.25s;
 }
 nav ul li a:hover { color: #fff; }
 nav ul li a:hover::after { transform: scaleX(1); }
+.nav-cta-group { display: flex; align-items: center; gap: 0.6rem; }
 .nav-donate {
 background: var(--campfire); color: var(--charcoal);
 font-weight: 600; font-size: 0.75rem;
@@ -89,6 +90,15 @@ white-space: nowrap;
 background: #e0b64e;
 transform: translateY(-1px);
 box-shadow: 0 3px 10px rgba(212,168,67,0.35);
+}
+.nav-donate.outline {
+background: transparent;
+color: var(--campfire);
+border: 1.5px solid var(--campfire);
+}
+.nav-donate.outline:hover {
+background: rgba(212,168,67,0.1);
+box-shadow: none;
 }
 
 /* mobile menu */
@@ -144,6 +154,7 @@ position: relative;
 font-weight: 400;
 line-height: 1.7;
 }
+.hero-ctas { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
 .hero-cta {
 display: inline-flex; align-items: center; gap: 0.6rem;
 background: var(--campfire); color: var(--charcoal);
@@ -159,6 +170,17 @@ box-shadow: 0 4px 15px rgba(212,168,67,0.3);
 background: #e0b64e;
 transform: translateY(-2px);
 box-shadow: 0 6px 25px rgba(212,168,67,0.4);
+}
+.hero-cta.outline {
+background: transparent;
+color: #fff;
+border: 1.5px solid rgba(255,255,255,0.4);
+box-shadow: none;
+}
+.hero-cta.outline:hover {
+background: rgba(255,255,255,0.08);
+transform: translateY(-2px);
+box-shadow: none;
 }
 .hero-trees {
 position: absolute; bottom: 0; left: 0; right: 0; height: 140px;
@@ -426,9 +448,21 @@ font-size: 1.05rem; color: rgba(255,255,255,0.7);
 margin-bottom: 2rem;
 line-height: 1.75;
 }
+.join-urgency {
+display: inline-block;
+background: rgba(212,168,67,0.12);
+border: 1px solid rgba(212,168,67,0.35);
+color: var(--campfire);
+font-weight: 600;
+font-size: 0.78rem;
+letter-spacing: 0.04em;
+padding: 0.5rem 1.2rem;
+border-radius: 100px;
+margin-bottom: 1.5rem;
+}
 .join-details {
-display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-max-width: 720px; margin: 2.5rem auto;
+display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.2rem;
+max-width: 880px; margin: 2.5rem auto;
 }
 .join-detail {
 text-align: center;
@@ -559,7 +593,6 @@ nav ul li a {
 .about-grid { grid-template-columns: 1fr; }
 .adventures-grid { grid-template-columns: 1fr; }
 .service-grid { grid-template-columns: 1fr; }
-.join-details { grid-template-columns: 1fr; gap: 0.8rem; }
 .contact-grid { grid-template-columns: 1fr; }
 .hero { min-height: 75vh; padding: 7rem 1.5rem 10rem; }
 .hero-logo { height: 160px; }
@@ -590,7 +623,10 @@ section { padding: 4rem 1.2rem; }
 <li><a href="dues.html">Dues</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
-<a href="https://www.paypal.com/ncp/payment/X7LHS5SNGFNVJ" target="_blank" class="nav-donate">Donate</a>
+<div class="nav-cta-group">
+<a href="#join" class="nav-donate">Join Us</a>
+<a href="https://www.paypal.com/ncp/payment/X7LHS5SNGFNVJ" target="_blank" class="nav-donate outline">Donate</a>
+</div>
 </div>
 </nav>
 
@@ -599,7 +635,10 @@ section { padding: 4rem 1.2rem; }
 <div class="hero-badge">Scouting America &bull; Washington Crossing Council</div>
 <img src="Troop_white_transparent.png" alt="Troop 13 - Trumbauersville, PA" class="hero-logo">
 <p class="hero-sub">Building character, leadership, and lifelong friendships for boys in Trumbauersville, PA. Tohickon District.</p>
-<a href="#contact" class="hero-cta">Learn More &darr;</a>
+<div class="hero-ctas">
+<a href="#join" class="hero-cta">Join Troop 13 &darr;</a>
+<a href="#about" class="hero-cta outline">Learn More</a>
+</div>
 <div class="hero-trees">
 <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0,120 L0,80 L30,40 L60,80 L80,50 L100,80 L130,30 L160,80 L180,60 L210,80 L240,20 L270,80 L300,50 L330,80 L350,40 L380,80 L410,25 L440,80 L470,55 L500,80 L520,35 L550,80 L580,45 L610,80 L640,20 L670,80 L700,50 L720,80 L750,30 L780,80 L810,55 L840,80 L870,25 L900,80 L930,45 L960,80 L980,35 L1010,80 L1040,50 L1070,80 L1100,20 L1130,80 L1160,40 L1190,80 L1210,55 L1240,80 L1270,30 L1300,80 L1330,50 L1360,80 L1390,35 L1420,80 L1440,60 L1440,120 Z" fill="rgba(0,0,0,0.3)"/>
@@ -939,6 +978,7 @@ section { padding: 4rem 1.2rem; }
 <div class="section-inner">
 <div class="section-label">Get Involved</div>
 <h2 class="section-title">Join Troop 13</h2>
+<div class="join-urgency">We're a small troop and always looking to grow &mdash; new scouts are welcome any time, not just at crossover</div>
 <p class="join-body">Whether your child is crossing over from Cub Scouts or is new to Scouting entirely, Troop 13 welcomes them. Come to a meeting, see what we're about, and discover why our scouts and families love this troop.</p>
 <div class="join-details">
 <div class="join-detail fade-up">
@@ -950,6 +990,11 @@ section { padding: 4rem 1.2rem; }
 <div class="detail-icon">&#128197;</div>
 <h3>When We Meet</h3>
 <p>Mondays at 7PM at <a href="https://maps.app.goo.gl/WqWfAnZNb1nKoapy9" target="_blank">Scout Hall</a>, behind the Trumbauersville Fire Station</p>
+</div>
+<div class="join-detail fade-up">
+<div class="detail-icon">&#128176;</div>
+<h3>Cost</h3>
+<p>$20/month troop dues, plus annual <a href="https://www.wccscouting.org/files/54877/2025-Fee-Schedule" target="_blank">Scouting America &amp; council fees</a>. Council scholarships and troop financial assistance are available &mdash; cost should never keep a scout from joining.</p>
 </div>
 <div class="join-detail fade-up">
 <div class="detail-icon">&#128233;</div>
